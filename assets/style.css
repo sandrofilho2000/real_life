@@ -435,7 +435,6 @@ section.galeria h2 {
 section.galeria .galeriaContainer {
   width: 95%;
   margin: 0 auto;
-  height: 40px;
 }
 
 section.galeria .galeriaContainer .item {
