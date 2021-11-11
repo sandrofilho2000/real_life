@@ -23,6 +23,19 @@
   background: #008037;
 }
 
+h2 {
+  display: block;
+  font-size: 20px;
+  background: #008037;
+  margin: 0 auto;
+  color: white;
+  padding: 5px;
+  padding-right: 0;
+  letter-spacing: 0.2em;
+  -webkit-box-shadow: 1px 2px 8px 1px rgba(0, 0, 0, 0.94);
+  box-shadow: 1px 2px 8px 1px rgba(0, 0, 0, 0.94);
+}
+
 .phoneMidia {
   width: 100%;
   height: 17px;
@@ -255,17 +268,7 @@ section.massas {
 }
 
 section.massas h2 {
-  display: block;
-  width: 120px;
-  font-size: 17px;
-  background: #008037;
-  margin: 0 auto;
-  color: white;
-  padding: 3px;
-  padding-right: 0;
-  letter-spacing: 0.2em;
-  -webkit-box-shadow: 1px 2px 8px 1px rgba(0, 0, 0, 0.94);
-  box-shadow: 1px 2px 8px 1px rgba(0, 0, 0, 0.94);
+  width: 140px;
 }
 
 section.massas .massasContainer {
@@ -328,18 +331,7 @@ section.cardapio {
 }
 
 section.cardapio h2, section.cardapio h3 {
-  display: block;
-  width: 140px;
-  text-align: center;
-  font-size: 17px;
-  background: #008037;
-  margin: 0 auto;
-  color: white;
-  padding: 3px;
-  padding-right: 0;
-  letter-spacing: 0.2em;
-  -webkit-box-shadow: 1px 2px 8px 1px rgba(0, 0, 0, 0.94);
-  box-shadow: 1px 2px 8px 1px rgba(0, 0, 0, 0.94);
+  width: 160px;
 }
 
 section.cardapio h3 {
@@ -434,19 +426,7 @@ section.galeria {
 }
 
 section.galeria h2 {
-  display: block;
-  width: 240px;
-  text-align: center;
-  font-size: 17px;
-  white-space: nowrap;
-  background: #008037;
-  margin: 0 auto;
-  color: white;
-  padding: 3px;
-  padding-right: 0;
-  letter-spacing: 0.2em;
-  -webkit-box-shadow: 1px 2px 8px 1px rgba(0, 0, 0, 0.94);
-  box-shadow: 1px 2px 8px 1px rgba(0, 0, 0, 0.94);
+  width: 260px;
   margin-bottom: 50px;
 }
 
@@ -492,19 +472,7 @@ section.depoimentos {
 }
 
 section.depoimentos h2 {
-  display: block;
-  width: 200px;
-  text-align: center;
-  font-size: 17px;
-  white-space: nowrap;
-  background: #008037;
-  margin: 0 auto;
-  color: white;
-  padding: 3px;
-  padding-right: 0;
-  letter-spacing: 0.2em;
-  -webkit-box-shadow: 1px 2px 8px 1px rgba(0, 0, 0, 0.94);
-  box-shadow: 1px 2px 8px 1px rgba(0, 0, 0, 0.94);
+  width: 220px;
   margin-bottom: 50px;
 }
 

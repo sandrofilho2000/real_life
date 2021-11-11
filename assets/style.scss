@@ -22,6 +22,21 @@
     background: #008037;
 }
 
+
+h2{
+    display: block;
+    font-size: 20px;
+    background: #008037;
+    margin: 0 auto;
+    color: white;
+    padding: 5px;
+    padding-right: 0;
+    letter-spacing: 0.2em;
+    -webkit-box-shadow: 1px 2px 8px 1px rgba(0,0,0,0.94); 
+    box-shadow: 1px 2px 8px 1px rgba(0,0,0,0.94);
+}
+
+
 .phoneMidia{
     width: 100%;
     height: 17px;
@@ -209,20 +224,10 @@ section.massas{
     height: auto;
     text-align: center;
     padding-top: 50px;
-    h2{
-        display: block;
-        width: 120px;
-        font-size: 17px;
-        background: #008037;
-        margin: 0 auto;
-        color: white;
-        padding: 3px;
-        padding-right: 0;
-        letter-spacing: 0.2em;
-        -webkit-box-shadow: 1px 2px 8px 1px rgba(0,0,0,0.94); 
-        box-shadow: 1px 2px 8px 1px rgba(0,0,0,0.94);
-    }
 
+    h2{
+        width: 140px;
+    }
     .massasContainer{
         height: 250px;
         width: 60%;
@@ -278,18 +283,7 @@ section.cardapio{
     
     
     h2, h3{
-        display: block;
-        width: 140px;
-        text-align: center;
-        font-size: 17px;
-        background: #008037;
-        margin: 0 auto;
-        color: white;
-        padding: 3px;
-        padding-right: 0;
-        letter-spacing: 0.2em;
-        -webkit-box-shadow: 1px 2px 8px 1px rgba(0,0,0,0.94); 
-        box-shadow: 1px 2px 8px 1px rgba(0,0,0,0.94);
+        width: 160px;
     }
 
     h3{
@@ -370,19 +364,7 @@ section.galeria {
     padding-top: 50px;
     text-align: center;
     h2{
-        display: block;
-        width: 240px;
-        text-align: center;
-        font-size: 17px;
-        white-space: nowrap;
-        background: #008037;
-        margin: 0 auto;
-        color: white;
-        padding: 3px;
-        padding-right: 0;
-        letter-spacing: 0.2em;
-        -webkit-box-shadow: 1px 2px 8px 1px rgba(0,0,0,0.94); 
-        box-shadow: 1px 2px 8px 1px rgba(0,0,0,0.94);
+        width: 260px;
         margin-bottom: 50px;
     }
     
@@ -423,19 +405,7 @@ section.depoimentos{
     background: #EEEEEE;
 
     h2{
-        display: block;
-        width: 200px;
-        text-align: center;
-        font-size: 17px;
-        white-space: nowrap;
-        background: #008037;
-        margin: 0 auto;
-        color: white;
-        padding: 3px;
-        padding-right: 0;
-        letter-spacing: 0.2em;
-        -webkit-box-shadow: 1px 2px 8px 1px rgba(0,0,0,0.94); 
-        box-shadow: 1px 2px 8px 1px rgba(0,0,0,0.94);
+        width: 220px;
         margin-bottom: 50px;
     }
     
