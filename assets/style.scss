@@ -299,9 +299,10 @@ section.cardapio{
         margin: 0 auto;
         margin-top: 50px;
         padding-bottom: 50px;
+        max-width: 1000px;
         height: auto;
         display: grid;
-        grid-template-columns: (1fr 1fr 1fr 1fr);
+        grid-template-columns: (1fr 1fr 1fr 1fr 1fr);
         justify-content: space-around;
         &::after {
         content: "";
@@ -313,7 +314,7 @@ section.cardapio{
             width: 190px;
             margin: 0 auto;
             cursor: pointer;
-            margin-top: 30px;
+            margin-top: 50px;
             background-image: url(../assets/img/paoFuncional2.png);
             background-size: cover;
             background-position: center;

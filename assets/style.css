@@ -347,11 +347,12 @@ section.cardapio .cardapioContainer {
   margin: 0 auto;
   margin-top: 50px;
   padding-bottom: 50px;
+  max-width: 1000px;
   height: auto;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 1fr 1fr 1fr;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   -ms-flex-pack: distribute;
       justify-content: space-around;
 }
@@ -368,7 +369,7 @@ section.cardapio .cardapioContainer .massaSingle {
   width: 190px;
   margin: 0 auto;
   cursor: pointer;
-  margin-top: 30px;
+  margin-top: 50px;
   background-image: url(../assets/img/paoFuncional2.png);
   background-size: cover;
   background-position: center;
