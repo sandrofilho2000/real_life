@@ -23,7 +23,7 @@
 }
 
 
-h2{
+h2, h3{
     display: block;
     font-size: 20px;
     background: #008037;
@@ -39,7 +39,7 @@ h2{
 
 .phoneMidia{
     width: 100%;
-    height: 17px;
+    height: 22px;
     background-color: #008037;
     display: flex;
     justify-content: space-between;
@@ -49,7 +49,7 @@ h2{
         height: 100%;
         width: 35px;
         height: 35px;
-        line-height: 18px;
+        line-height: 22px;
         p{
             font-size: 13px;
             white-space: nowrap;
@@ -189,7 +189,7 @@ header{
 
         .logoMiddle{
             height: 260px;
-            width: 370;
+            width: 370px;
             background-image: url(../assets/img/logo.png);
             background-position: center;
             background-size: cover;
@@ -239,8 +239,8 @@ section.massas{
         .massaSingle{
             border: 4px solid #008037;
             cursor: pointer;
-            height: 170px;
-            width: 170px;
+            height: 200px;
+            width: 200px;
             margin: 0 auto;
             background-image: url(../assets/img/paoFuncional.png);
             background-position: center;
