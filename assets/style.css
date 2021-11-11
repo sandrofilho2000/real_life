@@ -435,12 +435,12 @@ section.galeria h2 {
 section.galeria .galeriaContainer {
   width: 95%;
   margin: 0 auto;
-  height: 320px;
+  height: 40px;
 }
 
 section.galeria .galeriaContainer .item {
   height: 320px;
-  width: 150px;
+  width: 200px;
   margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -456,8 +456,8 @@ section.galeria .galeriaContainer .item {
 
 section.galeria .galeriaContainer .item .galeriaSingle {
   margin: 0 auto;
-  width: 150px;
-  height: 145px;
+  width: 180px;
+  height: 180px;
   cursor: pointer;
   border: 2px solid #008037;
   background-image: url(../assets/img/brownie.png);
@@ -474,8 +474,9 @@ section.depoimentos {
 }
 
 section.depoimentos h2 {
-  width: 220px;
+  width: 224px;
   margin-bottom: 50px;
+  padding-left: 8px;
 }
 
 section.depoimentos .depoimentosContainer {
