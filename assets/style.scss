@@ -539,12 +539,15 @@ section.bottomNav{
             li{
                 a{
                     color: #fff !important;
+                    transition: all ease 0.2s;
+                    &:hover{
+                        color: #B0986C;
+                    }
                 }
             }
         }
-            li a{
            
-        }
+
     }
     
 }

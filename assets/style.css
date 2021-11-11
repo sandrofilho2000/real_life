@@ -637,6 +637,12 @@ section.bottomNav nav div {
 
 section.bottomNav nav ul li a {
   color: #fff !important;
+  -webkit-transition: all ease 0.2s;
+  transition: all ease 0.2s;
+}
+
+section.bottomNav nav ul li a:hover {
+  color: #B0986C;
 }
 
 @media screen and (max-width: 720px) {
