@@ -32,11 +32,11 @@
 
     .phone, .midia{
         height: 100%;
-        width: 15px;
-        height: 17px;
+        width: 35px;
+        height: 35px;
         line-height: 18px;
         p{
-            font-size: 10px;
+            font-size: 13px;
             white-space: nowrap;
             font-weight: bold;
             color: white;
@@ -50,9 +50,10 @@
             width: 17px;
             height: 17px;
             i{
+                font-size: 20px;
                 color: white;
                 cursor: pointer;
-                line-height: 18px;
+                line-height: 22px;
                 transition: all ease 0.2s;
                 &:hover{
                     color: #B0986C;
@@ -64,7 +65,7 @@
 
 nav{
     width: 100%;
-    height: 50px;
+    height: 60px;
     background-color: rgb(0, 0, 0);
     padding: 0 2%;
     display: flex;
@@ -103,7 +104,7 @@ nav{
 
                 li {
                     a{
-                        font-size: 9px;
+                        font-size: 13px;
                         font-weight: bold;
                         color: #008037;
                         transition: all ease 0.2s;
@@ -118,11 +119,11 @@ nav{
             width: 10%;
             height: 100%;
             text-align: right;
-            line-height: 60px;
+            line-height: 77px;
             position: relative;
             i{
                 color: #008037;
-                font-size: 30px;
+                font-size: 35px;
                 cursor: pointer;
                 transition: all ease 0.2s;
                 &:hover{
@@ -135,8 +136,8 @@ nav{
                 top: 58%;
                 font-weight: bold;
                 transform: translateY(-50%);
-                right: 12px;
-                font-size: 10px;
+                right: 14px;
+                font-size: 13px;
                 color: white;     
             }
         }
@@ -172,8 +173,8 @@ header{
         align-items: center;
 
         .logoMiddle{
-            height: 200px;
-            width: 300px;
+            height: 260px;
+            width: 370;
             background-image: url(../assets/img/logo.png);
             background-position: center;
             background-size: cover;
