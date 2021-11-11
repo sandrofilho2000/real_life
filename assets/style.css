@@ -518,6 +518,7 @@ section.depoimentos .depoimentosContainer .depoimentoSingle p {
   text-align: center;
   color: black;
   font-size: 14px;
+  line-height: 20px;
   margin-top: 15px;
 }
 
@@ -616,6 +617,7 @@ section.contato .contatoContainer .contatoText p {
   display: block;
   color: white;
   font-size: 11px;
+  line-height: 20px;
 }
 
 section.bottomNav {
