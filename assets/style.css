@@ -438,7 +438,7 @@ section.galeria .galeriaContainer {
 }
 
 section.galeria .galeriaContainer .item {
-  height: 320px;
+  height: 400px;
   width: 200px;
   margin: 0 auto;
   display: -webkit-box;
