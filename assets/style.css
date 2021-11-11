@@ -24,6 +24,7 @@
 }
 
 h2, h3 {
+  text-align: center;
   display: block;
   font-size: 20px;
   background: #008037;
@@ -64,7 +65,7 @@ h2, h3 {
 }
 
 .phoneMidia div.midia {
-  width: 35px;
+  width: 45px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -365,6 +366,7 @@ section.cardapio .cardapioContainer::after {
 section.cardapio .cardapioContainer .massaSingle {
   height: 150px;
   width: 190px;
+  margin: 0 auto;
   cursor: pointer;
   margin-top: 30px;
   background-image: url(../assets/img/paoFuncional2.png);

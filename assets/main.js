@@ -39,7 +39,7 @@ $(function(){
             
 
             0:{
-                items:1,
+                items:2,
                 rows: 2
             },
             600:{
@@ -48,7 +48,7 @@ $(function(){
                 rows: 2
             },
             1000:{
-                items:7,
+                items:6,
                 loop:false
             }
 
