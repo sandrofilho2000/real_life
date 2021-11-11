@@ -487,7 +487,7 @@ section.depoimentos .depoimentosContainer {
 
 section.depoimentos .depoimentosContainer .depoimentoSingle {
   height: auto;
-  width: 170px;
+  width: 200px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -504,8 +504,8 @@ section.depoimentos .depoimentosContainer .depoimentoSingle {
 }
 
 section.depoimentos .depoimentosContainer .depoimentoSingle .depoimentoPic {
-  height: 100px;
-  width: 100px;
+  height: 130px;
+  width: 130px;
   border-radius: 50%;
   border: 3px solid #B0986C;
   background-image: url(../assets/img/e.jpeg);
@@ -517,7 +517,7 @@ section.depoimentos .depoimentosContainer .depoimentoSingle .depoimentoPic {
 section.depoimentos .depoimentosContainer .depoimentoSingle p {
   text-align: center;
   color: black;
-  font-size: 12px;
+  font-size: 14px;
   margin-top: 15px;
 }
 
