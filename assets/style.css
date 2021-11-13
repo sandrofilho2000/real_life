@@ -11,6 +11,10 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-transition: all ease-in-out 0.3s;
+  transition: all ease-in-out 0.3s;
+  position: relative;
+  right: 0;
 }
 
 .owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev, .owl-carousel button.owl-dot {
@@ -842,6 +846,32 @@ section.feitoPorMobile a img {
   width: 100%;
 }
 
+section.cart {
+  position: fixed;
+  z-index: 999;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  -webkit-transition: all ease-in-out 0.3s;
+  transition: all ease-in-out 0.3s;
+  max-width: 450px;
+  background: white;
+  border-left: 1px solid #005826;
+}
+
+section.cart i.backArrow {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: #005826;
+  font-size: 35px;
+  cursor: pointer;
+}
+
+section.cart.active {
+  right: 0 !important;
+}
+
 @media screen and (max-width: 1250px) {
   section.cardapio .cardapioContainer {
     -ms-grid-columns: 1fr 1fr 1fr;
@@ -909,6 +939,9 @@ section.feitoPorMobile a img {
   section.contato {
     height: 350px;
   }
+  section.galeria .galeriaContainer {
+    width: 420px;
+  }
   section.contato .contatoContainer {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -964,6 +997,10 @@ section.feitoPorMobile a img {
   }
   header .logoContainer .textContainer p {
     font-size: 27px;
+  }
+  section.galeria .galeriaContainer {
+    width: 90%;
+    max-width: 420px;
   }
 }
 
