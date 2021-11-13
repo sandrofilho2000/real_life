@@ -10,15 +10,18 @@ $(function(){
         infinity: false,
         responsive:{
             
+            550:{
+                items: 1,
+                loop:false
+            },
 
-            0:{
-                items:1,
-            },
-            600:{
+            
+           
+            750:{
                 items:2,
-                nav:false
+                loop:false
             },
-            1000:{
+            1200:{
                 items:3,
                 loop:false
             }
@@ -39,18 +42,24 @@ $(function(){
             
 
             0:{
-                items:2,
-                rows: 2
+                items:1,
             },
-            600:{
-                items:4,
-                nav:false,
-                rows: 2
+            550:{
+                items: 2,
             },
-            1000:{
-                items:6,
-                loop:false
-            }
+            770:{
+                items: 3,
+            },
+            1010:{
+                items: 4,
+            },
+            1240:{
+                items: 5,
+            },
+            1440:{
+                items: 6,
+            },
+  
 
         }
     })   

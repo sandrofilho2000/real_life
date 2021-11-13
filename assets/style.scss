@@ -95,10 +95,27 @@ nav{
     height: 60px;
     background-color: rgb(0, 0, 0);
     padding: 0 3%;
-    z-index: 2;
+    z-index: 3;
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #b0986c6e;
+    border-bottom: 2px solid #b0986c6e;
+
+    .menuToggle{
+        position: absolute;
+        display: none;
+        height: 100%;
+        left: 5%;
+        width: 60px;
+        line-height: 60px;
+        text-align: center;
+        align-items: center;
+        i{
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+        }
+    }
 
     .logo{
         background-image: url(../assets/img/logo.png);
@@ -111,6 +128,14 @@ nav{
         transform: translateY(-50%);
         width: 70px;
     }
+
+    .logo.logoMobile{
+        display: none;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+    }
+
     div{
         height: 100%;
         width: 50px;
@@ -144,7 +169,7 @@ nav{
             }
         }
         .cart{
-            width: 10%;
+            width: 35px;
             height: 100%;
             text-align: right;
             line-height: 77px;
@@ -164,8 +189,8 @@ nav{
                 top: 58%;
                 cursor: pointer;
                 font-weight: bold;
-                transform: translateY(-50%);
-                right: 14px;
+                transform: translateY(-50%) translateX(-50%);
+                left: 50%;
                 font-size: 13px;
                 color: white;     
             }
@@ -176,6 +201,41 @@ nav{
 nav:first-of-type{
     top: 22px;
     position: fixed;
+}
+
+nav.mobileMenu{
+    position: fixed;
+    display: none;
+    z-index: 2;
+    top: -172px;
+    background-color: white;
+    height: 172px;
+    transition: .5s;
+    ul{
+        width: 100%;
+        height: 22px;
+        height: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: column;
+
+        li {
+            a{
+                font-size: 11px;
+                font-weight: bold;
+                color: #008037;
+                transition: all ease 0.2s;
+                &:hover{
+                    color: #B0986C;
+                }
+            }
+        }
+    }
+}
+
+nav.mobileMenu.active{
+    top: 60px;
 }
 
 section.bottomNav nav{
@@ -270,9 +330,9 @@ section.massas{
     }
     .massasContainer{
         height: 250px;
-        width: 60%;
+        width: 70%;
         min-width: 300px;
-        max-width: 750px;
+        max-width: 1050px;
         margin: 0 auto;
         margin-top: 50px;
 
@@ -444,6 +504,7 @@ section.galeria {
     
     .galeriaContainer{
         width: 95%;
+        max-width: 1450px;
         margin: 0 auto;
         .item{
             height: 400px;
@@ -470,7 +531,6 @@ section.galeria {
     }
 }
 
-
 section.depoimentos{
     height: auto;
     width: 100%;
@@ -485,6 +545,7 @@ section.depoimentos{
     
     .depoimentosContainer{
         width: 75%;
+        max-width: 1200px;
         height: auto;
         margin: 0 auto;
         text-align: center;
@@ -524,7 +585,6 @@ section.depoimentos{
         }
     }
 }
-
 
 section.contato{
     width: 100%;
@@ -608,10 +668,10 @@ section.contato{
 
 section.bottomNav{
     width: 100%;
-    height: 20px;
+    height: auto;
     background-color: #008037;
     nav{
-        height: 20px;
+        height: auto;
         background-color: #008037;
 
         div{
@@ -636,14 +696,111 @@ section.bottomNav{
 }
 
 
-@media screen and (max-width: 720px){
+@media screen and (max-width: 1250px){
+    section.cardapio .cardapioContainer{
+        grid-template-columns: (1fr 1fr 1fr);
+    }
+}
+
+@media screen and (max-width: 920px){
+    section.cardapio .cardapioContainer{
+        width: 75%;
+        grid-template-columns: (1fr 1fr);
+    }
+}
+
+@media screen and (max-width: 853px){
+    .phoneMidia{
+        display: none;
+    }
+    nav:first-of-type{
+        top: 0
+    }
+
+    nav .menuToggle{
+        display: flex;
+    }
+
+    nav.navDesktop div.cartMenu .menu ul{
+        display: none;
+    }
+    
+    .logoDesktop{
+        opacity: 0;
+        z-index: -1;
+    }
+
+    .logoMobile{
+        display: block !important;
+    }
+
+    nav.mobileMenu{
+        display: block;
+    }
+    header{
+        margin-top: 60px;
+    }
+    header .logoContainer{
+        width: 70%;
+    }
+
+    header::before{
+        background: linear-gradient(90deg, rgba(0,0,0,0.96) 60%, rgba(0,0,0,0.6597283181179776) 100%);    
+    }
+}
+
+@media screen and (max-width: 770px){
     header{
         height: 80vh;
+    }
+
+    section.cardapio .cardapioContainer{
+        grid-template-columns: (1fr);
+    }
+
+    section.contato{
+        height: 350px;
+    }
+
+    section.contato .contatoContainer{
+        flex-direction: column;
+        align-items: center;
+    }
+    section.contato .contatoContainer .contatoLogoMidia{
+        max-height: 190px;
+    }
+    section.contato .contatoContainer .contatoLogoMidia > *{
+        transform: scale(1.4);
+    }   
+    section.contato .contatoContainer .contatoText{
+        width: 380px;
+    }
+    section.contato .contatoContainer .contatoText p{
+        text-align: center;
+        font-size: 15px;
+    }
+
+    section.bottomNav nav ul{
+        flex-direction: column;
+    }
+
+    section.bottomNav nav div.cartMenu .menu ul li a{
+        display: block;
+        padding: 10px;
     }
 }
 
 @media screen and (max-width: 580px){
     header .logoContainer{
-        width: 55%;
+        width: 100%;
+        padding: 65px 0;
+    }
+
+    header .logoContainer div{
+        transform: scale(.7);
+    }
+
+    header .logoContainer .textContainer p{
+        font-size: 27px;
     }
 }

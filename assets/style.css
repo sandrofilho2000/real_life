@@ -105,7 +105,7 @@ nav {
   height: 60px;
   background-color: black;
   padding: 0 3%;
-  z-index: 2;
+  z-index: 3;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -113,6 +113,26 @@ nav {
       -ms-flex-pack: justify;
           justify-content: space-between;
   border-bottom: 1px solid #b0986c6e;
+  border-bottom: 2px solid #b0986c6e;
+}
+
+nav .menuToggle {
+  position: absolute;
+  display: none;
+  height: 100%;
+  left: 5%;
+  width: 60px;
+  line-height: 60px;
+  text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+nav .menuToggle i {
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
 }
 
 nav .logo {
@@ -126,6 +146,14 @@ nav .logo {
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
   width: 70px;
+}
+
+nav .logo.logoMobile {
+  display: none;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
 }
 
 nav div {
@@ -172,7 +200,7 @@ nav div.cartMenu .menu ul li a:hover {
 }
 
 nav div.cartMenu .cart {
-  width: 10%;
+  width: 35px;
   height: 100%;
   text-align: right;
   line-height: 77px;
@@ -196,9 +224,9 @@ nav div.cartMenu .cart p {
   top: 58%;
   cursor: pointer;
   font-weight: bold;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-  right: 14px;
+  -webkit-transform: translateY(-50%) translateX(-50%);
+          transform: translateY(-50%) translateX(-50%);
+  left: 50%;
   font-size: 13px;
   color: white;
 }
@@ -206,6 +234,51 @@ nav div.cartMenu .cart p {
 nav:first-of-type {
   top: 22px;
   position: fixed;
+}
+
+nav.mobileMenu {
+  position: fixed;
+  display: none;
+  z-index: 2;
+  top: -172px;
+  background-color: white;
+  height: 172px;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+nav.mobileMenu ul {
+  width: 100%;
+  height: 22px;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+nav.mobileMenu ul li a {
+  font-size: 11px;
+  font-weight: bold;
+  color: #008037;
+  -webkit-transition: all ease 0.2s;
+  transition: all ease 0.2s;
+}
+
+nav.mobileMenu ul li a:hover {
+  color: #B0986C;
+}
+
+nav.mobileMenu.active {
+  top: 60px;
 }
 
 section.bottomNav nav {
@@ -313,9 +386,9 @@ section.massas h2 {
 
 section.massas .massasContainer {
   height: 250px;
-  width: 60%;
+  width: 70%;
   min-width: 300px;
-  max-width: 750px;
+  max-width: 1050px;
   margin: 0 auto;
   margin-top: 50px;
 }
@@ -507,6 +580,7 @@ section.galeria h2 {
 
 section.galeria .galeriaContainer {
   width: 95%;
+  max-width: 1450px;
   margin: 0 auto;
 }
 
@@ -553,6 +627,7 @@ section.depoimentos h2 {
 
 section.depoimentos .depoimentosContainer {
   width: 75%;
+  max-width: 1200px;
   height: auto;
   margin: 0 auto;
   text-align: center;
@@ -707,12 +782,12 @@ section.contato .contatoContainer .contatoText p {
 
 section.bottomNav {
   width: 100%;
-  height: 20px;
+  height: auto;
   background-color: #008037;
 }
 
 section.bottomNav nav {
-  height: 20px;
+  height: auto;
   background-color: #008037;
 }
 
@@ -730,15 +805,115 @@ section.bottomNav nav ul li a:hover {
   color: #B0986C;
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 1250px) {
+  section.cardapio .cardapioContainer {
+    -ms-grid-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 920px) {
+  section.cardapio .cardapioContainer {
+    width: 75%;
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 853px) {
+  .phoneMidia {
+    display: none;
+  }
+  nav:first-of-type {
+    top: 0;
+  }
+  nav .menuToggle {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  nav.navDesktop div.cartMenu .menu ul {
+    display: none;
+  }
+  .logoDesktop {
+    opacity: 0;
+    z-index: -1;
+  }
+  .logoMobile {
+    display: block !important;
+  }
+  nav.mobileMenu {
+    display: block;
+  }
+  header {
+    margin-top: 60px;
+  }
+  header .logoContainer {
+    width: 70%;
+  }
+  header::before {
+    background: -webkit-gradient(linear, left top, right top, color-stop(60%, rgba(0, 0, 0, 0.96)), to(rgba(0, 0, 0, 0.659728)));
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.96) 60%, rgba(0, 0, 0, 0.659728) 100%);
+  }
+}
+
+@media screen and (max-width: 770px) {
   header {
     height: 80vh;
+  }
+  section.cardapio .cardapioContainer {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+  section.contato {
+    height: 350px;
+  }
+  section.contato .contatoContainer {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  section.contato .contatoContainer .contatoLogoMidia {
+    max-height: 190px;
+  }
+  section.contato .contatoContainer .contatoLogoMidia > * {
+    -webkit-transform: scale(1.4);
+            transform: scale(1.4);
+  }
+  section.contato .contatoContainer .contatoText {
+    width: 380px;
+  }
+  section.contato .contatoContainer .contatoText p {
+    text-align: center;
+    font-size: 15px;
+  }
+  section.bottomNav nav ul {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  section.bottomNav nav div.cartMenu .menu ul li a {
+    display: block;
+    padding: 10px;
   }
 }
 
 @media screen and (max-width: 580px) {
   header .logoContainer {
-    width: 55%;
+    width: 100%;
+    padding: 65px 0;
+  }
+  header .logoContainer div {
+    -webkit-transform: scale(0.7);
+            transform: scale(0.7);
+  }
+  header .logoContainer .textContainer p {
+    font-size: 27px;
   }
 }
 /*# sourceMappingURL=style.css.map */
