@@ -6,7 +6,6 @@ $(function(){
     var galeriaBottom = document.querySelector("section#galeria").offsetHeight;
     var mobileMenu = (window.innerWidth >= 853 ? 0 : 172)
 
-    console.log(mobileMenu)
     document.querySelectorAll("a.massas").forEach((value)=>{
         value.addEventListener("click", (e)=>{
             e.preventDefault()
