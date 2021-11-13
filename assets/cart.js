@@ -13,12 +13,13 @@ $(function(){
             }
             
         })
-        $(".comprarSingle").click(function(){
-            var cartQtnTotal = Number($('.cartNumber').html())
-            $('.cartNumber').html(cartQtnTotal+=1)
-        })
     }
     setWindowRight()
+
+    $(".comprarSingle").click(function(){
+        var cartQtnTotal = Number($('.cartNumber').html())
+        $('.cartNumber').html(cartQtnTotal+=1)
+    })
 
     window.addEventListener('resize', setWindowRight())
 
