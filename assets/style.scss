@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap');
 
 
 *{
@@ -591,6 +590,7 @@ section.contato{
     height: 150px;
     background-color: black;
     margin-top: 50px;
+    position: relative;
 
     .contatoContainer{
         width: 100%;
@@ -664,6 +664,22 @@ section.contato{
             }
         }
     }
+
+    .feitoPor{
+        position: absolute;
+        right: 0px;
+        bottom: 5px;
+        z-index: 3;
+        width: 200px;
+        height: 50px;
+            
+        img{
+            height: 100%;
+            width: 100%;
+        }
+
+        
+    }
 }
 
 section.bottomNav{
@@ -695,6 +711,24 @@ section.bottomNav{
     
 }
 
+section.feitoPorMobile{
+    display: none;
+    height: 70px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color:  white;
+    a{
+        width: 220px;
+        height: 55px;
+
+        img{
+            height: 100%;
+            width: 100%;
+        }
+    }
+}
+
 
 @media screen and (max-width: 1250px){
     section.cardapio .cardapioContainer{
@@ -706,6 +740,9 @@ section.bottomNav{
     section.cardapio .cardapioContainer{
         width: 75%;
         grid-template-columns: (1fr 1fr);
+    }
+    .feitoPor{
+        transform: scale(.7);
     }
 }
 
@@ -787,6 +824,13 @@ section.bottomNav{
     section.bottomNav nav div.cartMenu .menu ul li a{
         display: block;
         padding: 10px;
+    }
+    section.contato .feitoPor{
+        display: none;
+    }
+
+    section.feitoPorMobile{
+        display: flex;
     }
 }
 

@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -680,6 +679,7 @@ section.contato {
   height: 150px;
   background-color: black;
   margin-top: 50px;
+  position: relative;
 }
 
 section.contato .contatoContainer {
@@ -780,6 +780,20 @@ section.contato .contatoContainer .contatoText p {
   line-height: 20px;
 }
 
+section.contato .feitoPor {
+  position: absolute;
+  right: 0px;
+  bottom: 5px;
+  z-index: 3;
+  width: 200px;
+  height: 50px;
+}
+
+section.contato .feitoPor img {
+  height: 100%;
+  width: 100%;
+}
+
 section.bottomNav {
   width: 100%;
   height: auto;
@@ -805,6 +819,29 @@ section.bottomNav nav ul li a:hover {
   color: #B0986C;
 }
 
+section.feitoPorMobile {
+  display: none;
+  height: 70px;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: white;
+}
+
+section.feitoPorMobile a {
+  width: 220px;
+  height: 55px;
+}
+
+section.feitoPorMobile a img {
+  height: 100%;
+  width: 100%;
+}
+
 @media screen and (max-width: 1250px) {
   section.cardapio .cardapioContainer {
     -ms-grid-columns: 1fr 1fr 1fr;
@@ -817,6 +854,10 @@ section.bottomNav nav ul li a:hover {
     width: 75%;
     -ms-grid-columns: 1fr 1fr;
         grid-template-columns: 1fr 1fr;
+  }
+  .feitoPor {
+    -webkit-transform: scale(0.7);
+            transform: scale(0.7);
   }
 }
 
@@ -900,6 +941,14 @@ section.bottomNav nav ul li a:hover {
   section.bottomNav nav div.cartMenu .menu ul li a {
     display: block;
     padding: 10px;
+  }
+  section.contato .feitoPor {
+    display: none;
+  }
+  section.feitoPorMobile {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
   }
 }
 
