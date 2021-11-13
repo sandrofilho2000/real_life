@@ -1,57 +1,51 @@
 $(function(){
-    $(".owl-carousel.massasContainer, .owl-carousel.depoimentosContainer").owlCarousel({
-        loop:true,
-        margin:10,
-        nav:false,
-        rows: 2,
-        items: 1,
-        dots: true,
-        responsiveClass:true,
-        infinity: false,
-        responsive:{
-            
+   
+    var headerBottom = document.querySelector("header").offsetHeight;
+    var massasBottom = document.querySelector("section#massas").offsetHeight;
+    var cardapioBottom = document.querySelector("section#cardapio").offsetHeight;
+    var galeriaBottom = document.querySelector("section#galeria").offsetHeight;
 
-            0:{
-                items:1,
-            },
-            600:{
-                items:2,
-                nav:false
-            },
-            1000:{
-                items:3,
-                loop:false
-            }
 
-        }
-    })   
-    $(".owl-carousel.galeriaContainer").owlCarousel({
-        loop:true,
-        margin:10,
-        nav:false,
-        rows: 2,
-        items: 1,
-        dots: true,
-        slideBy: 'page',
-        responsiveClass:true,
-        infinity: false,
-        responsive:{
-            
+    document.querySelectorAll("a.massas").forEach((value)=>{
+        value.addEventListener("click", (e)=>{
+            e.preventDefault()
+            window.scrollTo({top: (headerBottom) , behavior: 'smooth'});
+        })
+    })
 
-            0:{
-                items:2,
-                rows: 2
-            },
-            600:{
-                items:4,
-                nav:false,
-                rows: 2
-            },
-            1000:{
-                items:6,
-                loop:false
-            }
+    document.querySelectorAll("a.cardapio").forEach((value)=>{
+        value.addEventListener("click", (e)=>{
+            e.preventDefault()
+            console.log(massasBottom)
+            window.scrollTo({top: (headerBottom + massasBottom) , behavior: 'smooth'});
+        })
+    })
 
-        }
-    })   
+    document.querySelectorAll("a.galeria").forEach((value)=>{
+        value.addEventListener("click", (e)=>{
+            e.preventDefault()
+            console.log(massasBottom)
+            window.scrollTo({top: (headerBottom + massasBottom + cardapioBottom) , behavior: 'smooth'});
+        })
+    })
+
+    document.querySelectorAll("a.depoimentos").forEach((value)=>{
+        value.addEventListener("click", (e)=>{
+            e.preventDefault()
+            console.log(massasBottom)
+            window.scrollTo({top: (headerBottom + massasBottom + cardapioBottom + galeriaBottom) , behavior: 'smooth'});
+        })
+    })
+
+    document.querySelectorAll("a.depoimentos").forEach((value)=>{
+        value.addEventListener("click", (e)=>{
+            e.preventDefault()
+            console.log(massasBottom)
+            window.scrollTo({bottom: (0) , behavior: 'smooth'});
+        })
+    })
+
+
+
+        
 })

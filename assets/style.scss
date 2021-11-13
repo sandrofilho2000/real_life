@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap');
+
 
 *{
     padding: 0;
@@ -7,6 +9,10 @@
     text-decoration: none;
     list-style-type: none;
     font-family: 'Roboto', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 .owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev, .owl-carousel button.owl-dot{
@@ -43,6 +49,9 @@ h2, h3{
     height: 22px;
     background-color: #008037;
     display: flex;
+    position: fixed;
+    top: 0;
+    z-index: 2;
     justify-content: space-between;
     padding: 0 2%;
 
@@ -79,11 +88,14 @@ h2, h3{
     }
 }
 
+
+
 nav{
     width: 100%;
     height: 60px;
     background-color: rgb(0, 0, 0);
-    padding: 0 2%;
+    padding: 0 3%;
+    z-index: 2;
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #b0986c6e;
@@ -150,6 +162,7 @@ nav{
             p{
                 position: absolute;
                 top: 58%;
+                cursor: pointer;
                 font-weight: bold;
                 transform: translateY(-50%);
                 right: 14px;
@@ -160,9 +173,21 @@ nav{
     }
 }
 
+nav:first-of-type{
+    top: 22px;
+    position: fixed;
+}
+
+section.bottomNav nav{
+    position: relative;
+    top: unset;
+}
+
 header{
     width: 100%;
     height: 80vh;
+    margin-top: 82px;
+    z-index: 1;
     padding: 0;
     background-image: url(../assets/img/bgDesktop.png);
     background-position: center;
@@ -185,8 +210,10 @@ header{
         height: 100%;
         width: 50%;
         display: flex;
-        justify-content: center;
+        justify-content: space-around;
+        flex-direction: column;
         align-items: center;
+        padding: 27px 0;
 
         .logoMiddle{
             height: 260px;
@@ -195,6 +222,18 @@ header{
             background-position: center;
             background-size: cover;
             background-repeat: no-repeat;
+        }
+
+        .textContainer{
+            width: 370px;
+            text-align: center;
+            p{
+                letter-spacing: 0.075em;
+                font-size: 19px;
+                font-weight: bold;
+                color: #B0986C;
+                font-family: "Cormorant Garamond";
+            }
         }
     }
 }
@@ -299,7 +338,7 @@ section.cardapio{
         margin: 0 auto;
         margin-top: 50px;
         padding-bottom: 50px;
-        max-width: 1000px;
+        max-width: 1200px;
         height: auto;
         display: grid;
         grid-template-columns: (1fr 1fr 1fr 1fr);
@@ -310,10 +349,9 @@ section.cardapio{
         }
 
         .massaSingle{
-            height: 150px;
-            width: 190px;
+            height: 230px;
+            width: 250px;
             margin: 0 auto;
-            cursor: pointer;
             margin-top: 50px;
             background-image: url(../assets/img/paoFuncional2.png);
             background-size: cover;
@@ -321,6 +359,8 @@ section.cardapio{
             background-repeat: repeat;
             position: relative;
             border: 4px solid #B0986C;
+            margin-bottom: 20px;
+
             .massaMenu{
                 width: 100%;
                 height: 40px;
@@ -332,7 +372,7 @@ section.cardapio{
                 padding: 2px 5px;
                 text-align: left;
                 bottom: 0;
-
+                
                 p{
                     color: white;
                     font-size: 13px;
@@ -345,6 +385,37 @@ section.cardapio{
                     color: #ffffff;
                     &:hover{
                         opacity: 0.75;
+                    }
+                }
+
+                .precoSingle{
+                    position: absolute;
+                    right: 7px;
+                    font-family: "Cormorant Garamond";
+                    letter-spacing: 0.075em;
+                    font-size: 18px;
+                    color: #fff;
+                    font-weight: bold;
+                }
+
+                .comprarSingle{
+                    display: block;
+                    text-align: center;
+                    line-height: 22px;
+                    border-radius: 3px;
+                    bottom: -45px;
+                    left: -4px;
+                    background-color: #005826;
+                    position: absolute;
+                    white-space: nowrap;
+                    height: 30px;
+                    width: 130px;
+                    cursor: pointer;
+                    padding: 5px;
+                    font-weight: bold;
+                    transition: all ease 0.2s;
+                    &:hover{
+                        opacity: 0.9;
                     }
                 }
             }
@@ -508,6 +579,17 @@ section.contato{
                     }
                 }
             }
+
+            .phone{
+                width: 100px;
+                position: relative;
+                top: -10px;
+                p{
+                    font-size: 14px;
+                    color:#fff;
+                    white-space: nowrap;
+                }
+            }
         }
 
         .contatoText{
@@ -552,6 +634,8 @@ section.bottomNav{
     }
     
 }
+
+
 @media screen and (max-width: 720px){
     header{
         height: 80vh;

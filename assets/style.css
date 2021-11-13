@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -7,6 +8,10 @@
   text-decoration: none;
   list-style-type: none;
   font-family: 'Roboto', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 .owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev, .owl-carousel button.owl-dot {
@@ -44,6 +49,9 @@ h2, h3 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: fixed;
+  top: 0;
+  z-index: 2;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -96,7 +104,8 @@ nav {
   width: 100%;
   height: 60px;
   background-color: black;
-  padding: 0 2%;
+  padding: 0 3%;
+  z-index: 2;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -185,6 +194,7 @@ nav div.cartMenu .cart i:hover {
 nav div.cartMenu .cart p {
   position: absolute;
   top: 58%;
+  cursor: pointer;
   font-weight: bold;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
@@ -193,9 +203,21 @@ nav div.cartMenu .cart p {
   color: white;
 }
 
+nav:first-of-type {
+  top: 22px;
+  position: fixed;
+}
+
+section.bottomNav nav {
+  position: relative;
+  top: unset;
+}
+
 header {
   width: 100%;
   height: 80vh;
+  margin-top: 82px;
+  z-index: 1;
   padding: 0;
   background-image: url(../assets/img/bgDesktop.png);
   background-position: center;
@@ -223,12 +245,16 @@ header .logoContainer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding: 27px 0;
 }
 
 header .logoContainer .logoMiddle {
@@ -238,6 +264,19 @@ header .logoContainer .logoMiddle {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+header .logoContainer .textContainer {
+  width: 370px;
+  text-align: center;
+}
+
+header .logoContainer .textContainer p {
+  letter-spacing: 0.075em;
+  font-size: 19px;
+  font-weight: bold;
+  color: #B0986C;
+  font-family: "Cormorant Garamond";
 }
 
 ::-webkit-scrollbar {
@@ -347,7 +386,7 @@ section.cardapio .cardapioContainer {
   margin: 0 auto;
   margin-top: 50px;
   padding-bottom: 50px;
-  max-width: 1000px;
+  max-width: 1200px;
   height: auto;
   display: -ms-grid;
   display: grid;
@@ -365,10 +404,9 @@ section.cardapio .cardapioContainer::after {
 }
 
 section.cardapio .cardapioContainer .massaSingle {
-  height: 150px;
-  width: 190px;
+  height: 230px;
+  width: 250px;
   margin: 0 auto;
-  cursor: pointer;
   margin-top: 50px;
   background-image: url(../assets/img/paoFuncional2.png);
   background-size: cover;
@@ -376,6 +414,7 @@ section.cardapio .cardapioContainer .massaSingle {
   background-repeat: repeat;
   position: relative;
   border: 4px solid #B0986C;
+  margin-bottom: 20px;
 }
 
 section.cardapio .cardapioContainer .massaSingle .massaMenu {
@@ -412,6 +451,39 @@ section.cardapio .cardapioContainer .massaSingle .massaMenu .ingredientes {
 
 section.cardapio .cardapioContainer .massaSingle .massaMenu .ingredientes:hover {
   opacity: 0.75;
+}
+
+section.cardapio .cardapioContainer .massaSingle .massaMenu .precoSingle {
+  position: absolute;
+  right: 7px;
+  font-family: "Cormorant Garamond";
+  letter-spacing: 0.075em;
+  font-size: 18px;
+  color: #fff;
+  font-weight: bold;
+}
+
+section.cardapio .cardapioContainer .massaSingle .massaMenu .comprarSingle {
+  display: block;
+  text-align: center;
+  line-height: 22px;
+  border-radius: 3px;
+  bottom: -45px;
+  left: -4px;
+  background-color: #005826;
+  position: absolute;
+  white-space: nowrap;
+  height: 30px;
+  width: 130px;
+  cursor: pointer;
+  padding: 5px;
+  font-weight: bold;
+  -webkit-transition: all ease 0.2s;
+  transition: all ease 0.2s;
+}
+
+section.cardapio .cardapioContainer .massaSingle .massaMenu .comprarSingle:hover {
+  opacity: 0.9;
 }
 
 section.middle {
@@ -602,6 +674,18 @@ section.contato .contatoContainer .contatoLogoMidia .midia div i {
 
 section.contato .contatoContainer .contatoLogoMidia .midia div i:hover {
   color: #B0986C;
+}
+
+section.contato .contatoContainer .contatoLogoMidia .phone {
+  width: 100px;
+  position: relative;
+  top: -10px;
+}
+
+section.contato .contatoContainer .contatoLogoMidia .phone p {
+  font-size: 14px;
+  color: #fff;
+  white-space: nowrap;
 }
 
 section.contato .contatoContainer .contatoText {
