@@ -810,7 +810,8 @@ section.feitoPorMobile{
         transform: scale(1.4);
     }   
     section.contato .contatoContainer .contatoText{
-        width: 380px;
+        max-width: 380px;
+        width: 90%;
     }
     section.contato .contatoContainer .contatoText p{
         text-align: center;
@@ -846,5 +847,36 @@ section.feitoPorMobile{
 
     header .logoContainer .textContainer p{
         font-size: 27px;
+    }
+}
+
+@media screen and (max-width: 421px){
+    section.contato .contatoContainer .contatoText p{
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-height: 490px){
+    header .logoContainer{
+        padding: 0px !important;
+    }
+    header .logoContainer div{
+        transform: scale(0.7) !important;
+    }
+}
+
+@media screen and (max-height: 420px){
+
+    header .logoContainer div.logoMiddle{
+        height: 171px !important;
+        width: 272px !important;
+    }
+}
+
+@media screen and (max-height: 380px){
+
+    header .logoContainer div.logoMiddle{
+        height: 140px !important;
+        width: 207px !important;
     }
 }
