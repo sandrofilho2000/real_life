@@ -192,6 +192,25 @@ $(function(){
 
     all()
 
+
+    $('.bxl-whatsapp').click(function(){
+        var yourNumber = "+55 32 8411 6088 "
+        var yourMessage = "Olá, Whatsapp"
+
+        // %20 mean space in link
+        // If you already had an array then you just join them with '%20'
+        // easy right
+
+        function getLinkWhastapp(number, message) {
+        number = yourNumber
+        message = yourMessage.split(' ').join('%20')
+
+        window.open('https://api.whatsapp.com/send?phone=' + number + '&text=%20' + message, 'true')
+        }
+
+        getLinkWhastapp("+55 32 8411 6088", "Olá, WhatsApp")
+    })
+
 })
 
 
