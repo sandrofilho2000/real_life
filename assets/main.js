@@ -1,5 +1,5 @@
 $(function(){
-   
+
     var headerBottom = document.querySelector("header").offsetHeight;
     var massasBottom = document.querySelector("section#massas").offsetHeight;
     var cardapioBottom = document.querySelector("section#cardapio").offsetHeight;
@@ -44,7 +44,6 @@ $(function(){
             window.scrollTo({bottom: (0) , behavior: 'smooth'});
         })
     })
-
 
     $('.menuToggle').click(function(){
         $('.mobileMenu').toggleClass('active')

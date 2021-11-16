@@ -17,6 +17,57 @@ html {
   right: 0;
 }
 
+.overlayLoad {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: white;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.overlayLoad img {
+  width: 70%;
+  max-width: 450px;
+  opacity: .7;
+  -webkit-animation: opacidade 3s infinite;
+          animation: opacidade 3s infinite;
+}
+
+@-webkit-keyframes opacidade {
+  0% {
+    opacity: .7;
+  }
+  50% {
+    opacity: .3;
+  }
+  100% {
+    opacity: .7;
+  }
+}
+
+@keyframes opacidade {
+  0% {
+    opacity: .7;
+  }
+  50% {
+    opacity: .3;
+  }
+  100% {
+    opacity: .7;
+  }
+}
+
 .owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev, .owl-carousel button.owl-dot {
   width: 7px;
   height: 7px;
@@ -484,19 +535,41 @@ section.cardapio .cardapioContainer .massaSingle {
   width: 250px;
   margin: 0 auto;
   margin-top: 50px;
-  background-image: url(../assets/img/paoFuncional2.png);
-  background-size: cover;
-  background-position: center;
-  background-repeat: repeat;
   position: relative;
   border: 4px solid #B0986C;
   margin-bottom: 20px;
 }
 
+section.cardapio .cardapioContainer .massaSingle img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
 section.cardapio .cardapioContainer .massaSingle .massaMenu {
   width: 100%;
-  height: 40px;
+  height: 60px;
   background: #b0986cc2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  position: absolute;
+  text-align: left;
+  bottom: 0;
+}
+
+section.cardapio .cardapioContainer .massaSingle .massaMenu .menuContainer {
+  width: 100%;
+  height: 40px;
+  margin-top: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -509,15 +582,15 @@ section.cardapio .cardapioContainer .massaSingle .massaMenu {
   position: absolute;
   padding: 2px 5px;
   text-align: left;
-  bottom: 0;
+  top: 0;
 }
 
-section.cardapio .cardapioContainer .massaSingle .massaMenu p {
+section.cardapio .cardapioContainer .massaSingle .massaMenu .menuContainer p {
   color: white;
   font-size: 13px;
 }
 
-section.cardapio .cardapioContainer .massaSingle .massaMenu .ingredientes {
+section.cardapio .cardapioContainer .massaSingle .massaMenu .menuContainer .ingredientesToggle {
   opacity: 0.95;
   cursor: pointer;
   -webkit-transition: all ease 0.2s;
@@ -525,11 +598,11 @@ section.cardapio .cardapioContainer .massaSingle .massaMenu .ingredientes {
   color: #ffffff;
 }
 
-section.cardapio .cardapioContainer .massaSingle .massaMenu .ingredientes:hover {
+section.cardapio .cardapioContainer .massaSingle .massaMenu .menuContainer .ingredientesToggle:hover {
   opacity: 0.75;
 }
 
-section.cardapio .cardapioContainer .massaSingle .massaMenu .precoSingle {
+section.cardapio .cardapioContainer .massaSingle .massaMenu .menuContainer .precoSingle {
   position: absolute;
   right: 7px;
   font-family: "Cormorant Garamond";
@@ -539,7 +612,15 @@ section.cardapio .cardapioContainer .massaSingle .massaMenu .precoSingle {
   font-weight: bold;
 }
 
-section.cardapio .cardapioContainer .massaSingle .massaMenu .comprarSingle {
+section.cardapio .cardapioContainer .massaSingle p.ingredientes {
+  display: none;
+  color: white;
+  font-size: 12px;
+  margin-left: 5px;
+  margin-top: 50px;
+}
+
+section.cardapio .cardapioContainer .massaSingle .comprarSingle {
   display: block;
   text-align: center;
   line-height: 22px;
@@ -556,10 +637,21 @@ section.cardapio .cardapioContainer .massaSingle .massaMenu .comprarSingle {
   font-weight: bold;
   -webkit-transition: all ease 0.2s;
   transition: all ease 0.2s;
+  color: white;
+  font-size: 13px;
 }
 
-section.cardapio .cardapioContainer .massaSingle .massaMenu .comprarSingle:hover {
+section.cardapio .cardapioContainer .massaSingle .comprarSingle:hover {
   opacity: 0.9;
+}
+
+.massaSingle.active .massaMenu {
+  height: auto !important;
+  padding-bottom: 5px;
+}
+
+.massaSingle.active p.ingredientes {
+  display: block !important;
 }
 
 section.middle {
@@ -848,6 +940,8 @@ section.feitoPorMobile a img {
 
 section.cart {
   position: fixed;
+  overflow-y: auto;
+  overflow-x: hidden;
   z-index: 999;
   height: 100%;
   width: 100%;
@@ -855,21 +949,273 @@ section.cart {
   -webkit-transition: all ease-in-out 0.3s;
   transition: all ease-in-out 0.3s;
   max-width: 450px;
+  padding: 20px 0;
   background: white;
   border-left: 1px solid #005826;
 }
 
 section.cart i.backArrow {
   position: absolute;
-  top: 10px;
+  top: 30px;
   left: 10px;
   color: #005826;
   font-size: 35px;
   cursor: pointer;
 }
 
+section.cart h2 {
+  width: 175px;
+  margin-top: 10px;
+  font-size: 15px;
+}
+
+section.cart h3 {
+  font-size: 11px;
+  background: white;
+  color: #005826;
+  padding: 6px 18px;
+}
+
+section.cart h4 {
+  top: 150px;
+  position: absolute;
+  display: none;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+section.cart .descriptionContainer, section.cart .totalContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin: 0 auto;
+  margin-top: 30px;
+  width: 95%;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #00582657;
+}
+
+section.cart .productsContainer {
+  width: 95%;
+  height: 260px;
+  margin: 0 auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+section.cart .productsContainer .productWrapper {
+  width: 98%;
+  height: auto;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+section.cart .productsContainer .productWrapper .productSingle {
+  width: 100%;
+  height: 85px;
+  border-bottom: 1px solid #00582657;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+section.cart .productsContainer .productWrapper .productSingle .productDelete {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 0px;
+  right: -3px;
+}
+
+section.cart .productsContainer .productWrapper .productSingle .productDelete p {
+  display: block;
+  color: #222;
+  font-size: 25px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+section.cart .productsContainer .productWrapper .productSingle .productDescription {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-width: 157px;
+}
+
+section.cart .productsContainer .productWrapper .productSingle .productDescription .productText {
+  margin-left: 5px;
+}
+
+section.cart .productsContainer .productWrapper .productSingle .productDescription .productText p {
+  color: #005826;
+}
+
+section.cart .productsContainer .productWrapper .productSingle .productDescription .productText .productName {
+  font-size: 14px;
+}
+
+section.cart .productsContainer .productWrapper .productSingle .productDescription img {
+  height: 50px;
+  width: 50px;
+}
+
+section.cart .productsContainer .productWrapper .productSingle .productQtn {
+  height: 100px;
+  width: 100px;
+  margin-left: 19px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+section.cart .productsContainer .productWrapper .productSingle .productQtn p, section.cart .productsContainer .productWrapper .productSingle .productQtn input {
+  display: block;
+  height: 25px;
+  width: 25px;
+  text-align: center;
+  font-size: 22px;
+  line-height: 25px;
+  text-align: center;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+section.cart .productsContainer .productWrapper .productSingle .productQtn .plusQtn {
+  background: #fff;
+  color: #005826;
+  -webkit-box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.51);
+          box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.51);
+  cursor: pointer;
+}
+
+section.cart .productsContainer .productWrapper .productSingle .productQtn .qtn input {
+  color: #005826;
+  font-size: 25px;
+  border: none;
+  outline: none;
+  width: 50px !important;
+}
+
+section.cart .productsContainer .productWrapper .productSingle .productQtn .minusQtn {
+  background: #005826;
+  color: #fff;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+section.cart .productsContainer .productWrapper .productSingle .productPrice {
+  height: 50px;
+  width: 110px;
+  text-align: right;
+  line-height: 50px;
+}
+
+section.cart .productsContainer .productWrapper .productSingle .productPrice span {
+  color: #005826;
+  font-weight: bold;
+}
+
+section.cart .productsContainer .productWrapper .productSingle .productPrice .realNumber {
+  display: none;
+}
+
+section.cart .productObservation {
+  width: 93.5%;
+  margin: 0 auto;
+  margin-top: 15px;
+}
+
+section.cart .productObservation p {
+  font-size: 14px;
+  color: #005826;
+  font-weight: 600;
+}
+
+section.cart .productObservation textarea {
+  resize: none;
+  width: 100%;
+  height: 60px;
+  border: 1px solid #005826;
+  outline: none;
+  margin-top: 5px;
+}
+
+section.cart .productObservation textarea:focus {
+  border: 2px solid #005826;
+}
+
+section.cart div.totalContainer {
+  border-bottom: none;
+  margin-top: 20px !important;
+}
+
+section.cart div.totalContainer h3 {
+  position: relative;
+}
+
+section.cart div.totalContainer h3 .total, section.cart div.totalContainer h3 .subtotal {
+  font-weight: 700;
+}
+
 section.cart.active {
   right: 0 !important;
+}
+
+h2.finalizarPedido {
+  width: 240px !important;
+  height: 30px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  cursor: pointer;
+}
+
+h2.finalizarPedido p {
+  margin-left: 15px;
+}
+
+h2.finalizarPedido i {
+  color: #fff !important;
+  font-size: 29px;
 }
 
 @media screen and (max-width: 1250px) {
