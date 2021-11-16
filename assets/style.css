@@ -21,7 +21,7 @@ html {
   position: fixed;
   width: 100vw;
   height: 100vh;
-  background: white;
+  background: black;
   z-index: 9999;
   top: 0;
   left: 0;
@@ -1207,6 +1207,7 @@ h2.finalizarPedido {
       -ms-flex-pack: justify;
           justify-content: space-between;
   cursor: pointer;
+  padding-left: 15px;
 }
 
 h2.finalizarPedido p {
@@ -1329,6 +1330,9 @@ h2.finalizarPedido i {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+  }
+  .minusQtn {
+    margin-left: 25px !important;
   }
 }
 

@@ -21,7 +21,7 @@ html{
     position: fixed;
     width: 100vw;
     height: 100vh;
-    background: white;
+    background: black;
     z-index: 9999;
     top: 0;
     left: 0;
@@ -1030,6 +1030,7 @@ h2.finalizarPedido{
     display: flex;
     justify-content: space-between;
     cursor: pointer;
+    padding-left: 15px;
     p{
         margin-left: 15px;
     }
@@ -1147,6 +1148,10 @@ h2.finalizarPedido{
 
     section.feitoPorMobile{
         display: flex;
+    }
+
+    .minusQtn{
+        margin-left: 25px !important;
     }
 }
 
