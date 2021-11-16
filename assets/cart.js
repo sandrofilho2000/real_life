@@ -12,19 +12,19 @@ $(function(){
 
         function cartNumber(){
             let inputNum = document.querySelectorAll('.inputQtn')
-            let num = 0
+            let number = 0
             inputNum.forEach((n)=>{
-                num += Number(n.value)
-                
+                number += Number(n.value)
             })
-            
-            document.querySelector('.cartNumber').innerHTML = num 
-            if(num == 0){
+            document.querySelector('.cartNumber').innerHTML = number
+            let num = document.querySelectorAll('.productSingle')
+            document.querySelector('.cartNumber').innerHTML = num.length
+            if(num.length == 0){
                 $('section.cart h4').css('display', 'block')
             }else{
                 $('section.cart h4').css('display', 'none')
             }
-            console.log(num)
+
             return num.length
         }
         cartNumber()
@@ -96,7 +96,6 @@ $(function(){
                 btn.value = Number(btn.value) + 1
     
                 productTotal(e)
-                cartNumber()
             }
         })
     
@@ -112,7 +111,7 @@ $(function(){
                 }
     
                 productTotal(e)
-                cartNumber()
+                
             }
         })
     
@@ -120,7 +119,6 @@ $(function(){
             qtnInput.addEventListener('keyup', function(e){
                 
                 productTotal(e)
-                cartNumber()
                 
             })
         })
@@ -193,10 +191,53 @@ $(function(){
     
 
     all()
-    
 
-
-
-
-    
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
