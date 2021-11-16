@@ -1063,7 +1063,7 @@ section.cart .productsContainer .productWrapper .productSingle .productDescripti
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  max-width: 157px;
+  width: 157px;
 }
 
 section.cart .productsContainer .productWrapper .productSingle .productDescription .productText {
