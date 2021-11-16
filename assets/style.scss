@@ -32,21 +32,21 @@ html{
     img{
         width: 70%;
         max-width: 450px;
-        opacity: .7;
+        opacity: .9;
         animation: opacidade 3s infinite;
     }
 }
 
 @keyframes opacidade{
     0%{
-        opacity: .7;
+        opacity: .9;
     }
     50%{
-        opacity: .3;
+        opacity: .5;
     }
 
     100%{
-        opacity: .7;
+        opacity: .9;
     }
 }
 
@@ -1056,6 +1056,10 @@ h2.finalizarPedido{
     .feitoPor{
         transform: scale(.7);
     }
+
+    .minusQtn{
+        margin-left: 25px !important;
+    }
 }
 
 @media screen and (max-width: 853px){
@@ -1148,10 +1152,6 @@ h2.finalizarPedido{
 
     section.feitoPorMobile{
         display: flex;
-    }
-
-    .minusQtn{
-        margin-left: 25px !important;
     }
 }
 
