@@ -50,7 +50,7 @@ $(function(){
     fillCart()
 
     function all(){
-        function addToMemory(){
+        function currentCart(){
             const currentOrder = []
             const pedidoAll = document.
             querySelectorAll('.productSingle')
@@ -69,11 +69,96 @@ $(function(){
                 currentOrder.push(pedidoSingle)
             })
 
-            console.log(currentOrder)
-            
-            localStorage.setItem("pedidos", JSON.stringify(currentOrder));
+            return currentOrder
         }
-   
+        
+        function addToMemory(){
+            
+
+            currentCart()
+            
+            localStorage.setItem("pedidos", JSON.stringify(currentCart()));
+        }
+
+        function finalizarPedido(){
+            var produtos = ''
+            const pedidoAll = currentCart()
+            pedidoAll.forEach((obj)=>{
+                pedido = Object.entries(obj)
+                let nome = pedido[0][1]
+                let img = pedido[1][1]
+                let preco = pedido[2][1]
+                let qtn =  pedido[4][1]
+
+                produtos += `*${qtn}x* _${nome}_ *(R$${preco})* 
+                `
+                
+                
+            })
+            produtos = produtos.replaceAll('  ', '')
+            
+            return `*NOVO PEDIDO* 
+            -----------------------------
+            ▶ *RESUMO DO PEDIDO* 
+            
+            Pedido #12
+            
+            ${produtos}
+            
+             *Subtotal do item: R$ 24,00*
+            -  -  -  -  -  -  -  -  -  -  -
+            
+            *SUBTOTAL:* R$ 24,00
+            
+            ------------------------------------------
+            ▶ *Dados para entrega* 
+            
+            *Nome:* Sandro Filho 
+            *Endereço:* Rua marli ferreira, nº: Lote 206
+            *Bairro:* Apollo III
+            *Complemento:* Quadra 10
+            *Ponto de Referência:* Rua da creche casa da criança, portão de correr marrom 
+            *Telefone:* 21984238879
+            
+            *Taxa de Entrega:* R$ 3,00
+            
+             🕙 *Tempo de Entrega:* aprox. 11:55 a 12:25
+            
+            ------------------------------- 
+            
+            *Acréscimo pela forma de pagamento:* R$ 1,00 
+            
+            ▶ *TOTAL* = *R$ 28,00*
+            ------------------------------ 
+            
+            ▶ *PAGAMENTO* 
+            
+            Pagamento no cartão 
+            Cartão: Visa */
+            `
+        }
+
+        $('h2.finalizarPedido').click(function(){
+            var yourNumber = "+55 32 8411 6088 "
+            var yourMessage = finalizarPedido()
+    
+            // %20 mean space in link
+            // If you already had an array then you just join them with '%20'
+            // easy right
+    
+            function getLinkWhastapp(number, message) {
+            number = yourNumber
+            message = yourMessage.split(' ').join('%20')
+    
+            window.open('https://api.whatsapp.com/send?phone=' + number + '&text=%20' + message, 'true')
+            }
+    
+            getLinkWhastapp("+55 32 8411 6088", "Olá, WhatsApp")
+        })
+
+
+
+        finalizarPedido()
         
 
         function cartNumber(){
@@ -264,23 +349,7 @@ $(function(){
     all()
 
 
-    $('.bxl-whatsapp').click(function(){
-        var yourNumber = "+55 32 8411 6088 "
-        var yourMessage = "Olá, Whatsapp"
-
-        // %20 mean space in link
-        // If you already had an array then you just join them with '%20'
-        // easy right
-
-        function getLinkWhastapp(number, message) {
-        number = yourNumber
-        message = yourMessage.split(' ').join('%20')
-
-        window.open('https://api.whatsapp.com/send?phone=' + number + '&text=%20' + message, 'true')
-        }
-
-        getLinkWhastapp("+55 32 8411 6088", "Olá, WhatsApp")
-    })
+    
 
 })
 
