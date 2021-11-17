@@ -6,9 +6,74 @@ $(function(){
     }
     setWindowRight()
 
-    
+    function fillCart(){
+        var pedidos = JSON.parse(localStorage.getItem("pedidos"))
+        pedidos.forEach((p, index)=>{
+            obj = Object.entries(p)
+            let nome = obj[0][1]
+            let img = obj[1][1]
+            let preco = obj[2][1]
+            let realPreco = obj[2][1]
+            let qtn =  obj[4][1]
+            
+            let produtoSingle = document.createElement('div')
+            produtoSingle.setAttribute("class", 'productSingle')
+            let div = `
+                        <div class='productDelete'><p>+</p></div>
+                        <div class='productDescription'>
+                            <div class='productImage'>
+                                <img src='${img}' alt=''>
+                            </div>
+                            <div class='productText'>
+                                <p class='productName' ><b>${nome}</b></p>
+                            </div>
+                        </div>
+                        <div class='productQtn'>
+                            <p class='plusQtn'>+</p>
+                            <p class='qtn'><input type='number' min='0' name=''  class='inputQtn' value='${qtn}'></p>
+                            <p class='minusQtn'>-</p>
+
+                            
+                        </div>
+                        <div class='productPrice'>
+                            <span class='currency'>R$</span><span class='number'>${preco}</span><span class='realNumber'>${realPreco}</span>
+                        </div>`
+
+            produtoSingle.innerHTML = div
+
+            document.querySelector('.productWrapper').appendChild(produtoSingle)
+        })
+    }
+    fillCart()
 
     function all(){
+
+        
+        function addToMemory(){
+            const currentOrder = []
+            const pedidoAll = document.
+            querySelectorAll('.productSingle')
+            pedidoAll.forEach((pedido, index)=>{
+                const pedidoSingle = {}
+                let nome = pedido.querySelector(".productName b").innerText
+                let img = pedido.querySelector("img").getAttribute('src')
+                let preco = pedido.querySelector("span.number").innerHTML
+                let realPreco = pedido.querySelector("span.realNumber").innerHTML
+                let qtn = pedido.querySelector('.inputQtn').value
+                pedidoSingle["nome"] = nome
+                pedidoSingle["img"] = img
+                pedidoSingle["preco"] = preco
+                pedidoSingle["realPreco"] = realPreco
+                pedidoSingle["qtn"] = qtn
+                currentOrder.push(pedidoSingle)
+            })
+
+            console.log(currentOrder)
+            
+            localStorage.setItem("pedidos", JSON.stringify(currentOrder));
+        }
+   
+        
 
         function cartNumber(){
             let inputNum = document.querySelectorAll('.inputQtn')
@@ -42,6 +107,8 @@ $(function(){
             }else{
                 document.querySelector(".total").innerHTML = `R$0,00`
             }
+
+            addToMemory()
         }
         totalAll()
 
@@ -134,9 +201,12 @@ $(function(){
         })
 
 
+        
+
 
     }
 
+    
     window.addEventListener('resize', setWindowRight())
 
     $(".bx.bxs-shopping-bag, p.cartNumber, .backArrow").click(function(){

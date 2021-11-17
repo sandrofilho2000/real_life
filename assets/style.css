@@ -275,7 +275,7 @@ nav div.cartMenu .cart i:hover {
 
 nav div.cartMenu .cart p {
   position: absolute;
-  top: 58%;
+  top: 60%;
   cursor: pointer;
   font-weight: bold;
   -webkit-transform: translateY(-50%) translateX(-50%);
