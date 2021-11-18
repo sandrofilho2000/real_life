@@ -17,7 +17,7 @@ html {
   right: 0;
 }
 
-.overlayLoad {
+.overlayLoad, .overlayCart {
   position: fixed;
   width: 100vw;
   height: 100vh;
@@ -36,12 +36,25 @@ html {
           justify-content: center;
 }
 
-.overlayLoad img {
+.overlayLoad img, .overlayCart img {
   width: 70%;
   max-width: 450px;
   opacity: .9;
   -webkit-animation: opacidade 3s infinite;
           animation: opacidade 3s infinite;
+}
+
+div.overlayCart {
+  z-index: -999;
+  opacity: .0;
+  left: 0;
+  -webkit-transition: all ease-in-out 0.3s;
+  transition: all ease-in-out 0.3s;
+}
+
+div.overlayCart.active {
+  z-index: 999;
+  opacity: .85;
 }
 
 @-webkit-keyframes opacidade {

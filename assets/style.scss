@@ -17,7 +17,7 @@ html{
     right: 0;
 }
 
-.overlayLoad{
+.overlayLoad, .overlayCart{
     position: fixed;
     width: 100vw;
     height: 100vh;
@@ -36,7 +36,17 @@ html{
         animation: opacidade 3s infinite;
     }
 }
+div.overlayCart{
+    z-index: -999;
+    opacity: .0;
+    left: 0;
+    transition: all ease-in-out 0.3s;
+}
 
+div.overlayCart.active{
+    z-index: 999;
+    opacity: .85;
+}
 @keyframes opacidade{
     0%{
         opacity: .9;

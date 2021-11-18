@@ -1,20 +1,21 @@
 $(function(){
 
-    function setWindowRight(){
+    function setCartWidth(){
         var cartWidth = document.querySelector('section.cart').offsetWidth;
         $('section.cart').css('right', cartWidth * (-1))
     }
-    setWindowRight()
+    setCartWidth()
 
     function fillCart(){
         var pedidos = JSON.parse(localStorage.getItem("pedidos"))
         if(pedidos){
             pedidos.forEach((p, index)=>{
                 obj = Object.entries(p)
+                console.log(obj)
                 let nome = obj[0][1]
                 let img = obj[1][1]
                 let preco = obj[2][1]
-                let realPreco = obj[2][1]
+                let realPreco = obj[3][1]
                 let qtn =  obj[4][1]
                 
                 let produtoSingle = document.createElement('div')
@@ -72,7 +73,7 @@ $(function(){
             return currentOrder
         }
         
-        function addToMemory(){
+        function addOrderToMemory(){
             
 
             currentCart()
@@ -97,60 +98,69 @@ $(function(){
             })
             produtos = produtos.replaceAll('  ', '')
             
-            return `*NOVO PEDIDO* 
-            -----------------------------
-            ▶ *RESUMO DO PEDIDO* 
-            
-            Pedido #12
-            
-            ${produtos}
-            
-             *Subtotal do item: R$ 24,00*
-            -  -  -  -  -  -  -  -  -  -  -
-            
-            *SUBTOTAL:* R$ 24,00
-            
-            ------------------------------------------
-            ▶ *Dados para entrega* 
-            
-            *Nome:* Sandro Filho 
-            *Endereço:* Rua marli ferreira, nº: Lote 206
-            *Bairro:* Apollo III
-            *Complemento:* Quadra 10
-            *Ponto de Referência:* Rua da creche casa da criança, portão de correr marrom 
-            *Telefone:* 21984238879
-            
-            *Taxa de Entrega:* R$ 3,00
-            
-             🕙 *Tempo de Entrega:* aprox. 11:55 a 12:25
-            
-            ------------------------------- 
-            
-            *Acréscimo pela forma de pagamento:* R$ 1,00 
-            
-            ▶ *TOTAL* = *R$ 28,00*
-            ------------------------------ 
-            
-            ▶ *PAGAMENTO* 
-            
-            Pagamento no cartão 
-            Cartão: Visa */
+            pedidoFinal =  `
+                NOVO PEDIDO 
+                -----------------------------
+                ▶ RESUMO DO PEDIDO 
+
+                Pedido 19
+
+                Link para acompanhar status do pedido:
+                https://pedir.delivery/app/varandaodochef/track?token=86a4499c0294cb8cf431c2a415f18609192f1cf128d16e9f749f247e52293255 
+
+                1x Monte sua quentinha (R$ 12,00)
+                (1x) arroz
+                (1x) Feijão
+                (1x) Macarrão
+                (1x) Frango Grelhado
+
+                
+                Subtotal do item: R$ 12,00
+                -  -  -  -  -  -  -  -  -  -  -
+
+                SUBTOTAL: R$ 12,00
+
+                ------------------------------------------
+                ▶ Dados para entrega 
+                
+                Nome: Sandro
+                Endereço: Marli Ferreira, nº: 32
+                Bairro: Apollo III
+                Ponto de Referência: Creche
+                Telefone: 21984238879
+
+                Taxa de Entrega: R$ 3,00
+
+                🕙 Tempo de Entrega: aprox. 13:37 a 14:07
+
+                ------------------------------- 
+                ▶ TOTAL = R$ 15,00
+                ------------------------------ 
+
+                ▶ PAGAMENTO 
+                
+                Pagamento em Dinheiro
             `
+
+            return pedidoFinal
         }
 
+        console.log(finalizarPedido())
         $('h2.finalizarPedido').click(function(){
             var yourNumber = "+55 32 8411 6088 "
             var yourMessage = finalizarPedido()
+            
     
             // %20 mean space in link
             // If you already had an array then you just join them with '%20'
             // easy right
     
             function getLinkWhastapp(number, message) {
-            number = yourNumber
-            message = yourMessage.split(' ').join('%20')
-    
-            window.open('https://api.whatsapp.com/send?phone=' + number + '&text=%20' + message, 'true')
+                number = yourNumber
+                message = yourMessage
+                message = window.encodeURIComponent(message)
+                console.log(yourMessage)
+                window.open(`https://wa.me/553284116088?text=${message}`)
             }
     
             getLinkWhastapp("+55 32 8411 6088", "Olá, WhatsApp")
@@ -194,7 +204,7 @@ $(function(){
                 document.querySelector(".total").innerHTML = `R$0,00`
             }
 
-            addToMemory()
+            addOrderToMemory()
         }
         totalAll()
 
@@ -293,16 +303,13 @@ $(function(){
     }
 
     
-    window.addEventListener('resize', setWindowRight())
+    window.addEventListener('resize', setCartWidth())
 
     $(".bx.bxs-shopping-bag, p.cartNumber, .backArrow").click(function(){
         var cartWidth = document.querySelector('section.cart').offsetWidth;
         $('section.cart').toggleClass("active")
-        if($( "section.cart" ).hasClass( "active" )){
-            $('html').css('right', cartWidth)
-        }else{
-            $('html').css('right', 0)
-        }
+        $('.overlayCart').css('width', `calc( 100vw - ${cartWidth} )`)
+        $('.overlayCart').toggleClass("active")
         
     })
 
