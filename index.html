@@ -524,10 +524,12 @@
             <p>OBSERVAÇÕES</p>
             <textarea name="" id="" cols="30" rows="10"></textarea>
         </div>
+        <input type="checkbox" name="" id="entrega">
+        <label for="entrega">Vou retirar meu pedido</label>
         <div class="totalContainer">
             <h3>
                 <span>ENTREGA</span>
-                <span>R$6,00</span>
+                <span class="spanEntrega">R$6,00</span>
             </h3>
             <h3>
                 <span>SUBTOTAL</span>
@@ -542,13 +544,133 @@
         <h2 class="finalizarPedido"> <span>FINALIZAR PEDIDO</span>   <i class='bx bx-right-arrow-alt'></i> </h2>
     </section>
 
+    <section class="finalizarPedido">
+        <i class='bx bx-right-arrow-alt backArrow'></i>
+        <p class="hiddenOrder"></p>
+        <h2>FINALIZAR PEDIDO</h2>
 
+        <form action="">
+            <div class="leftColumn column">
+                <input type="text" name="nome" id="" placeholder="Nome">
+
+                <input list="bairrosList" name="" id="" placeholder="Bairros">
+                <datalist id="bairrosList">
+                    <option value="Água Santa">Água Santa</option>
+                    <option value="Aguada">Aguada</option>
+                    <option value="Área Rural de Barbacena">Área Rural de Barbacena</option>
+                    <option value="Barbacena">Barbacena</option>
+                    <option value="Belvedere">Belvedere</option>
+                    <option value="Boa Morte">Boa Morte</option>
+                    <option value="Boa Vista">Boa Vista</option>
+                    <option value="Bom Pastor">Bom Pastor</option>
+                    <option value="Caiçaras">Caiçaras</option>
+                    <option value="Camélias">Camélias</option>
+                    <option value="Caminho Novo">Caminho Novo</option>
+                    <option value="Campo">Campo</option>
+                    <option value="Campolide">Campolide</option>
+                    <option value="Carmo">Carmo</option>
+                    <option value="Centro">Centro</option>
+                    <option value="Chácara">Chácara</option>
+                    <option value="Chácara Andorinhas">Chácara Andorinhas</option>
+                    <option value="Cohab">Cohab</option>
+                    <option value="Colônia Rodrigo Silva">Colônia Rodrigo Silva</option>
+                    <option value="Diniz II">Diniz II</option>
+                    <option value="Dom Bosco">Dom Bosco</option>
+                    <option value="Eucisa">Eucisa</option>
+                    <option value="Fátima">Fátima</option>
+                    <option value="Floresta">Floresta</option>
+                    <option value="Funcionários">Funcionários</option>
+                    <option value="Greenville">Greenville</option>
+                    <option value="Grogoto">Grogoto</option>
+                    <option value="Guarani">Guarani</option>
+                    <option value="Ibiapaba">Ibiapaba</option>
+                    <option value="Industrial">Industrial</option>
+                    <option value="Ipanema">Ipanema</option>
+                    <option value="Jardim">Jardim</option>
+                    <option value="Jardim">Jardim</option>
+                    <option value="Jardim Alterosas">Jardim Alterosas</option>
+                    <option value="João Paulo II">João Paulo II</option>
+                    <option value="Loteamento Marino Ceolin">Loteamento Marino Ceolin</option>
+                    <option value="Mansões">Mansões</option>
+                    <option value="Marino Ceolin">Marino Ceolin</option>
+                    <option value="Monsenhor Mário Quintão">Monsenhor Mário Quintão</option>
+                    <option value="Monte Mário">Monte Mário</option>
+                    <option value="Nossa Senhora Aparecida">Nossa Senhora Aparecida</option>
+                    <option value="Nova Cidade">Nova Cidade</option>
+                    <option value="Nova Suíça">Nova Suíça</option>
+                    <option value="Nove de Marco">Nove de Marco</option>
+                    <option value="Nove Marco">Nove Marco</option>
+                    <option value="Novo Horizonte">Novo Horizonte</option>
+                    <option value="Padre Cunha">Padre Cunha</option>
+                    <option value="Panorama">Panorama</option>
+                    <option value="Passarinhos">Passarinhos</option>
+                    <option value="Pontilhão">Pontilhão</option>
+                    <option value="Retiro das Rosas">Retiro das Rosas</option>
+                    <option value="Roman">Roman</option>
+                    <option value="Santa Antônio">Santa Antônio</option>
+                    <option value="Santa Cecília">Santa Cecília</option>
+                    <option value="Santa Efigênia">Santa Efigênia</option>
+                    <option value="Santa Luzia">Santa Luzia</option>
+                    <option value="Santa Maria">Santa Maria</option>
+                    <option value="Santa Tereza">Santa Tereza</option>
+                    <option value="Santa Tereza I">Santa Tereza I</option>
+                    <option value="Santa Tereza II">Santa Tereza II</option>
+                    <option value="Santo Antônio">Santo Antônio</option>
+                    <option value="São Cristóvão">São Cristóvão</option>
+                    <option value="São Francisco">São Francisco</option>
+                    <option value="São Geraldo">São Geraldo</option>
+                    <option value="São Jorge">São Jorge</option>
+                    <option value="São José">São José</option>
+                    <option value="São Pedro">São Pedro</option>
+                    <option value="São Sebastião">São Sebastião</option>
+                    <option value="Sape">Sape</option>
+                    <option value="Serra Verde">Serra Verde</option>
+                    <option value="Servidão Verde">Servidão Verde</option>
+                    <option value="Valentim Prenassi">Valentim Prenassi</option>
+                    <option value="Vila Rosas">Vila Rosas</option>
+                    <option value="Vilela">Vilela</option>
+                    <option value="Vista Alegre">Vista Alegre</option>
+                </datalist>
+
+                <input type="text" name="referencia" placeholder="Ponto de referência">
+            </div>
+            <div class="rightColumn column">
+                <input type="text" name="endereco" placeholder="Endereço">
+                <input type="text" name="telefone" placeholder="Telefone">
+                <input type="text" name="complemento" placeholder="Complemento">
+
+            </div>
+        </form>
+
+        <p class="pSeuPedido">SEU PEDIDO</p>
+        <div class="seuPedido">
+            <div class="container">
+     
+
+                <textarea name="copiarAqui" id="copiarAqui">
+                    
+                </textarea>
+
+            </div>
+            
+
+            <p>COPIAR PEDIDO <i class="bx bx-copy" ></i></p>
+        </div>
+
+        <div class="pedir">
+            <h2>PEDIR <i class='bx bxl-whatsapp'></i></h2>
+        </div>
+    </section>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/js-base64@2.5.2/base64.min.js"></script>
     <script src="assets/jquery.js"></script>
     <script src="assets/carrousel.js"></script>
     <script src="assets/main.js"></script>
     <script src="assets/cart.js"></script>
     <script src="assets/components.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     
 </body>
 </html>

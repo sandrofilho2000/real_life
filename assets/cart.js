@@ -3,6 +3,7 @@ $(function(){
     function setCartWidth(){
         var cartWidth = document.querySelector('section.cart').offsetWidth;
         $('section.cart').css('right', cartWidth * (-1))
+        $('section.finalizarPedido').css('right', cartWidth * (-1))
     }
     setCartWidth()
 
@@ -11,7 +12,6 @@ $(function(){
         if(pedidos){
             pedidos.forEach((p, index)=>{
                 obj = Object.entries(p)
-                console.log(obj)
                 let nome = obj[0][1]
                 let img = obj[1][1]
                 let preco = obj[2][1]
@@ -91,82 +91,71 @@ $(function(){
                 let preco = pedido[2][1]
                 let qtn =  pedido[4][1]
 
-                produtos += `*${qtn}x* _${nome}_ *(R$${preco})* 
-                `
+                produtos += `*${qtn}x* _${nome}_ *(R$${preco})*\n` 
+                
                 
                 
             })
             produtos = produtos.replaceAll('  ', '')
+
+            pedidoFinal =  
+`*NOVO PEDIDO* 
+-----------------------------
+RESUMO DO PEDIDO 
+
+Pedido 15
+
+
+
+${produtos}
+
+ 
+ Subtotal do item: ${$('span.subtotal')}
+ -  -  -  -  -  -  -  -  -  -  -
+
+SUBTOTAL: ${$('span.total')}
+
+ ------------------------------------------
+▶ Dados para entrega 
+ 
+Nome: Sandro Filho 
+Endereço: Rua marli ferreira, nº: Lote 206
+Bairro: Apollo III
+Complemento: Quadra 10
+Ponto de Referência: Rua da creche casa da criança, portão de correr marrom 
+Telefone: 21984238879
+
+Taxa de Entrega: R$ 3,00
+
+ 🕙 Tempo de Entrega: aprox. 12:17 a 12:47
+
+ ------------------------------- 
+
+Acréscimo pela forma de pagamento: R$ 1,00 
+
+▶ TOTAL = R$ 40,00
+ ------------------------------ 
+
+▶ PAGAMENTO 
+ 
+Pagamento no cartão 
+Cartão: Hipercard`
             
-            pedidoFinal =  `
-                NOVO PEDIDO 
-                -----------------------------
-                ▶ RESUMO DO PEDIDO 
-
-                Pedido 19
-
-                Link para acompanhar status do pedido:
-                https://pedir.delivery/app/varandaodochef/track?token=86a4499c0294cb8cf431c2a415f18609192f1cf128d16e9f749f247e52293255 
-
-                1x Monte sua quentinha (R$ 12,00)
-                (1x) arroz
-                (1x) Feijão
-                (1x) Macarrão
-                (1x) Frango Grelhado
-
-                
-                Subtotal do item: R$ 12,00
-                -  -  -  -  -  -  -  -  -  -  -
-
-                SUBTOTAL: R$ 12,00
-
-                ------------------------------------------
-                ▶ Dados para entrega 
-                
-                Nome: Sandro
-                Endereço: Marli Ferreira, nº: 32
-                Bairro: Apollo III
-                Ponto de Referência: Creche
-                Telefone: 21984238879
-
-                Taxa de Entrega: R$ 3,00
-
-                🕙 Tempo de Entrega: aprox. 13:37 a 14:07
-
-                ------------------------------- 
-                ▶ TOTAL = R$ 15,00
-                ------------------------------ 
-
-                ▶ PAGAMENTO 
-                
-                Pagamento em Dinheiro
-            `
-
-            return pedidoFinal
+        document.querySelector('#copiarAqui').value = pedidoFinal
+        document.querySelector(".hiddenOrder").innerHTML = pedidoFinal
+        return pedidoFinal
+        
         }
 
-        console.log(finalizarPedido())
-        $('h2.finalizarPedido').click(function(){
-            var yourNumber = "+55 32 8411 6088 "
-            var yourMessage = finalizarPedido()
-            
-    
-            // %20 mean space in link
-            // If you already had an array then you just join them with '%20'
-            // easy right
-    
-            function getLinkWhastapp(number, message) {
-                number = yourNumber
-                message = yourMessage
-                message = window.encodeURIComponent(message)
-                console.log(yourMessage)
-                window.open(`https://wa.me/553284116088?text=${message}`)
+        function taxaDeEntrega(){
+            if(document.querySelector('#entrega').checked){
+                document.querySelector('.spanEntrega').innerText = "R$0,00"
+                return 0
+            }else{
+                document.querySelector('.spanEntrega').innerText = "R$6,00"
+                return 6
             }
-    
-            getLinkWhastapp("+55 32 8411 6088", "Olá, WhatsApp")
-        })
-
-
+        }
 
         finalizarPedido()
         
@@ -199,7 +188,7 @@ $(function(){
             document.querySelector(".subtotal").innerHTML = `R$${String(subtotal.toFixed(2)).replaceAll(".", ',')}`
 
             if(document.querySelector(".subtotal").innerHTML != 'R$0,00'){
-                document.querySelector(".total").innerHTML = `R$${String((subtotal + 6).toFixed(2)).replaceAll(".", ',')}`
+                document.querySelector(".total").innerHTML = `R$${String((subtotal + taxaDeEntrega()).toFixed(2)).replaceAll(".", ',')}`
             }else{
                 document.querySelector(".total").innerHTML = `R$0,00`
             }
@@ -296,23 +285,44 @@ $(function(){
             })
         })
 
+        document.querySelector('#entrega').addEventListener('click', function(){
+            taxaDeEntrega()
+            totalAll()
+        })
 
-        
 
+        $('.seuPedido p').click(function(){
+            $('.seuPedido p').html('COPIADO <i class="bx bx-check"></i>')
+    
+            var copiar = document.getElementById("copiarAqui")
+            copiar.select();
+            document.execCommand("copy");
+            setTimeout(() => {
+                $('.seuPedido .container').css('height', '100%')
+                $(this).css('bottom', '-20px')
+                $(this).html('COPIAR PEDIDO <i class="bx bx-copy" ></i>')
+            }, 3000);
+            
+    
+            
+        })
+
+        $('h2.finalizarPedido').click(function(){
+            var yourMessage = finalizarPedido()
+            function getLinkWhastapp(number) {
+                message = window.encodeURIComponent(yourMessage)
+                console.log(yourMessage)
+                window.open(`https://wa.me/553284116088?text=${message}`)
+            }
+    
+            getLinkWhastapp("+55 32 8411 6088")
+        })
 
     }
-
     
-    window.addEventListener('resize', setCartWidth())
 
-    $(".bx.bxs-shopping-bag, p.cartNumber, .backArrow").click(function(){
-        var cartWidth = document.querySelector('section.cart').offsetWidth;
-        $('section.cart').toggleClass("active")
-        $('.overlayCart').css('width', `calc( 100vw - ${cartWidth} )`)
-        $('.overlayCart').toggleClass("active")
-        
-    })
-
+   
+    
     $(".comprarSingle").click(function(e){
 
         let parent = e.currentTarget.parentElement
@@ -349,61 +359,25 @@ $(function(){
         all()
     })
 
+    $(".bx.bxs-shopping-bag, p.cartNumber, .cart .backArrow").click(function(){
+        var cartWidth = document.querySelector('section.cart').offsetWidth;
+        $('section.cart').toggleClass("active")
+        $('.overlayCart').css('width', `calc( 100vw - ${cartWidth} )`)
+        $('.overlayCart').toggleClass("active")
+        
+    })
 
+    $("h2.finalizarPedido, .finalizarPedido .backArrow").click(function(){
+        var cartWidth = document.querySelector('section.cart').offsetWidth;
+        $('section.finalizarPedido').toggleClass("active")
+    })
 
     
 
+    
+    
+    window.addEventListener('resize', setCartWidth())
     all()
 
-
-    
-
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
