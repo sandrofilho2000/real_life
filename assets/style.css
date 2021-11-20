@@ -1721,8 +1721,8 @@ section.finalizarPedido .addressToggle.unabled {
 
 @media screen and (max-width: 390px) {
   section.cardapio .cardapioContainer .massaSingle {
-    height: 120px;
-    width: 140px;
+    height: 125px;
+    width: 145px;
   }
   section.cardapio .cardapioContainer .massaSingle .comprarSingle {
     line-height: 16px;
@@ -1742,7 +1742,7 @@ section.finalizarPedido .addressToggle.unabled {
     font-size: 9px;
   }
   section.cardapio .cardapioContainer .massaSingle .massaMenu .menuContainer .precoSingle {
-    font-size: 11px;
+    font-size: 12px;
   }
   section.cardapio .cardapioContainer .massaSingle .massaMenu p.ingredientes {
     font-size: 9px;
