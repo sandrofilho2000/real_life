@@ -1560,10 +1560,9 @@ section.finalizarPedido .addressToggle.unabled {
 }
 
 @media screen and (max-width: 920px) {
-  section.cardapio .cardapioContainer {
-    width: 75%;
-    -ms-grid-columns: 1fr 1fr;
-        grid-template-columns: 1fr 1fr;
+  section.cardapio .cardapioContainer .massaSingle {
+    height: 180px;
+    width: 200px;
   }
   .feitoPor {
     -webkit-transform: scale(0.7);
@@ -1615,9 +1614,29 @@ section.finalizarPedido .addressToggle.unabled {
   header {
     height: 80vh;
   }
-  section.cardapio .cardapioContainer {
-    -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
+  section.cardapio .cardapioContainer .massaSingle {
+    height: 150px;
+    width: 170px;
+  }
+  section.cardapio .cardapioContainer .massaSingle .comprarSingle {
+    line-height: 16px;
+    height: 25px;
+    width: 110px;
+    font-size: 11px;
+    bottom: -38px;
+  }
+  section.cardapio .cardapioContainer .massaSingle .massaMenu {
+    height: 45px;
+  }
+  section.cardapio .cardapioContainer .massaSingle .massaMenu .menuContainer {
+    margin-top: 0;
+    height: 45px;
+  }
+  section.cardapio .cardapioContainer .massaSingle .massaMenu .menuContainer p {
+    font-size: 10px;
+  }
+  section.cardapio .cardapioContainer .massaSingle .massaMenu .menuContainer .precoSingle {
+    font-size: 15px;
   }
   section.contato {
     height: 350px;
@@ -1684,6 +1703,10 @@ section.finalizarPedido .addressToggle.unabled {
   section.galeria .galeriaContainer {
     width: 90%;
     max-width: 420px;
+  }
+  section.cardapio .cardapioContainer {
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
   }
 }
 
