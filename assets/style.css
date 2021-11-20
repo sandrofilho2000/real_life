@@ -1298,7 +1298,7 @@ section.finalizarPedido h4 {
 
 section.finalizarPedido form {
   margin: 0 auto;
-  width: 330px;
+  width: 300px;
   height: auto;
   min-height: 215px;
   margin-top: 50px;
@@ -1310,7 +1310,7 @@ section.finalizarPedido form {
 section.finalizarPedido form .column {
   width: 50%;
   height: 100%;
-  min-height: 215px;
+  min-height: 165px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1328,7 +1328,7 @@ section.finalizarPedido form .column input {
   outline: none;
   color: #00612a;
   font-weight: 700px;
-  width: 90%;
+  width: 115px;
   padding-bottom: 5px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.541);
   margin-bottom: 45px;
@@ -1360,8 +1360,12 @@ section.finalizarPedido form .column input:-moz-placeholder {
   font-weight: bold;
 }
 
+section.finalizarPedido form .rightColumn {
+  padding-left: 35px;
+}
+
 section.finalizarPedido .pagamento {
-  width: 330px;
+  width: 300px;
   margin: 0 auto;
   height: 100px;
   margin-top: -40px;
@@ -1389,7 +1393,7 @@ section.finalizarPedido .pagamento .containerRadio input {
 section.finalizarPedido .pagamento .containerRadio label {
   text-transform: uppercase;
   font-weight: bold;
-  margin-right: 55px;
+  margin-right: 48px;
   font-size: 13px;
   margin-left: 3px;
 }
@@ -1403,6 +1407,7 @@ section.finalizarPedido .pagamento .troco {
 section.finalizarPedido .pagamento .troco label {
   font-size: 13px;
   font-weight: bold;
+  margin-left: 6px;
 }
 
 section.finalizarPedido .pagamento .troco input#troco {
@@ -1420,15 +1425,17 @@ section.finalizarPedido .pagamento .troco input#troco {
 section.finalizarPedido p.pSeuPedido {
   color: #00612a;
   font-weight: bold;
-  margin-left: 60px;
+  display: block;
+  width: 300px;
+  margin: 0 auto;
   margin-bottom: 5px;
 }
 
 section.finalizarPedido .seuPedido {
-  width: 315px;
+  width: 300px;
   height: 145px;
+  margin: 0 auto;
   border: 1px solid;
-  margin-left: 60px;
   padding: 0 0 0 10px;
   position: relative;
   overflow: hidden;
@@ -1483,19 +1490,24 @@ section.finalizarPedido .seuPedido:hover p {
 }
 
 section.finalizarPedido .pedir {
-  width: 314px;
+  width: 300px;
   height: 60px;
-  margin-left: 60px;
+  margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: relative;
 }
 
 section.finalizarPedido .pedir h2 {
   height: 30px;
+  margin-top: 0px;
   width: 130px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1510,7 +1522,8 @@ section.finalizarPedido .pedir h2 {
   padding-left: 12px;
   padding-right: 5px;
   cursor: pointer;
-  position: relative;
+  left: 0;
+  position: absolute;
   opacity: 0.5;
   pointer-events: none;
   -webkit-transition: all ease-in-out .2s;
@@ -1528,11 +1541,11 @@ section.finalizarPedido .pedir h2.active {
 }
 
 section.finalizarPedido .pedir p {
-  font-size: 13px;
+  font-size: 11px;
   display: block;
-  width: 170px;
-  position: relative;
-  top: 2px;
+  width: 120px;
+  position: absolute;
+  right: 0;
 }
 
 section.finalizarPedido .addressToggle.unabled {
