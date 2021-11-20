@@ -337,7 +337,7 @@ header{
             width: 370px;
             background-image: url(../assets/img/logo.png);
             background-position: center;
-            background-size: cover;
+            background-size: contain;
             background-repeat: no-repeat;
         }
 
@@ -393,16 +393,22 @@ section.massas{
         margin-top: 50px;
 
         .massaSingle{
-            border: 4px solid #008037;
+            border: 4px solid #0080376b;
             cursor: pointer;
             height: 200px;
             width: 200px;
+            transition: all ease-in-out .2s;
             margin: 0 auto;
-            background-image: url(../assets/img/paoFuncional.png);
-            background-position: center;
-            background-size: cover;
-            background-repeat: no-repeat;
             position: relative;
+
+            img{
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+            }
+            
             .massaMenu{
                 width: 100%;
                 height: 50px;
@@ -426,6 +432,10 @@ section.massas{
 
             }
         }
+
+        .massaSingle.active{
+            border: 4px solid #008037;
+        }
     }
 }
 
@@ -445,8 +455,12 @@ section.cardapio{
     h3{
         color: #008037;
         background: white;
-        width: 240px;
+        display: block;
+        padding: 15px 5px;
         margin-top: 20px;
+        max-width: 300px;
+        width: auto;
+        text-align: center;
     }
 
     .cardapioContainer{
@@ -456,7 +470,7 @@ section.cardapio{
         padding-bottom: 50px;
         max-width: 1200px;
         height: auto;
-        display: grid;
+        display: none;
         grid-template-columns: (1fr 1fr 1fr 1fr);
         justify-content: space-around;
         &::after {
@@ -504,7 +518,7 @@ section.cardapio{
                     text-align: left;
                     top: 0;
                     p:first-of-type{
-                        width: 50%;
+                        width: 51%;
                     }
                     p{
                         color: white;
@@ -566,7 +580,9 @@ section.cardapio{
         }
         
     }
-    
+    .cardapioContainer.active{
+        display: grid;
+    }
 }
 
 .massaSingle.active .massaMenu{

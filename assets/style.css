@@ -414,7 +414,7 @@ header .logoContainer .logoMiddle {
   width: 370px;
   background-image: url(../assets/img/logo.png);
   background-position: center;
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
 }
 
@@ -473,16 +473,22 @@ section.massas .massasContainer {
 }
 
 section.massas .massasContainer .massaSingle {
-  border: 4px solid #008037;
+  border: 4px solid #0080376b;
   cursor: pointer;
   height: 200px;
   width: 200px;
+  -webkit-transition: all ease-in-out .2s;
+  transition: all ease-in-out .2s;
   margin: 0 auto;
-  background-image: url(../assets/img/paoFuncional.png);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
   position: relative;
+}
+
+section.massas .massasContainer .massaSingle img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
 }
 
 section.massas .massasContainer .massaSingle .massaMenu {
@@ -513,6 +519,10 @@ section.massas .massasContainer .massaSingle .massaMenu p.massaInfo {
   font-size: 10px;
 }
 
+section.massas .massasContainer .massaSingle.active {
+  border: 4px solid #008037;
+}
+
 section.cardapio {
   width: 100%;
   height: 80vh;
@@ -529,8 +539,12 @@ section.cardapio h2, section.cardapio h3 {
 section.cardapio h3 {
   color: #008037;
   background: white;
-  width: 240px;
+  display: block;
+  padding: 15px 5px;
   margin-top: 20px;
+  max-width: 300px;
+  width: auto;
+  text-align: center;
 }
 
 section.cardapio .cardapioContainer {
@@ -540,8 +554,7 @@ section.cardapio .cardapioContainer {
   padding-bottom: 50px;
   max-width: 1200px;
   height: auto;
-  display: -ms-grid;
-  display: grid;
+  display: none;
   -ms-grid-columns: 1fr 1fr 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr 1fr;
   -ms-flex-pack: distribute;
@@ -611,7 +624,7 @@ section.cardapio .cardapioContainer .massaSingle .massaMenu .menuContainer {
 }
 
 section.cardapio .cardapioContainer .massaSingle .massaMenu .menuContainer p:first-of-type {
-  width: 50%;
+  width: 51%;
 }
 
 section.cardapio .cardapioContainer .massaSingle .massaMenu .menuContainer p {
@@ -672,6 +685,11 @@ section.cardapio .cardapioContainer .massaSingle .comprarSingle {
 
 section.cardapio .cardapioContainer .massaSingle .comprarSingle:hover {
   opacity: 0.9;
+}
+
+section.cardapio .cardapioContainer.active {
+  display: -ms-grid;
+  display: grid;
 }
 
 .massaSingle.active .massaMenu {
