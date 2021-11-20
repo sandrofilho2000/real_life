@@ -1638,6 +1638,9 @@ section.finalizarPedido .addressToggle.unabled {
   section.cardapio .cardapioContainer .massaSingle .massaMenu .menuContainer .precoSingle {
     font-size: 15px;
   }
+  section.cardapio .cardapioContainer .massaSingle .massaMenu p.ingredientes {
+    font-size: 10px;
+  }
   section.contato {
     height: 350px;
   }
@@ -1716,6 +1719,36 @@ section.finalizarPedido .addressToggle.unabled {
   }
 }
 
+@media screen and (max-width: 390px) {
+  section.cardapio .cardapioContainer .massaSingle {
+    height: 120px;
+    width: 140px;
+  }
+  section.cardapio .cardapioContainer .massaSingle .comprarSingle {
+    line-height: 16px;
+    height: 25px;
+    width: 90px;
+    font-size: 9px;
+    bottom: -38px;
+  }
+  section.cardapio .cardapioContainer .massaSingle .massaMenu {
+    height: 35px;
+  }
+  section.cardapio .cardapioContainer .massaSingle .massaMenu .menuContainer {
+    margin-top: 0;
+    height: 35px;
+  }
+  section.cardapio .cardapioContainer .massaSingle .massaMenu .menuContainer p {
+    font-size: 9px;
+  }
+  section.cardapio .cardapioContainer .massaSingle .massaMenu .menuContainer .precoSingle {
+    font-size: 11px;
+  }
+  section.cardapio .cardapioContainer .massaSingle .massaMenu p.ingredientes {
+    font-size: 9px;
+  }
+}
+
 @media screen and (max-height: 490px) {
   header .logoContainer {
     padding: 0px !important;
@@ -1733,10 +1766,37 @@ section.finalizarPedido .addressToggle.unabled {
   }
 }
 
-@media screen and (max-height: 380px) {
+@media screen and (max-height: 360px) {
   header .logoContainer div.logoMiddle {
     height: 140px !important;
     width: 207px !important;
+  }
+  section.cardapio .cardapioContainer .massaSingle {
+    height: 120px;
+    width: 140px;
+  }
+  section.cardapio .cardapioContainer .massaSingle .comprarSingle {
+    line-height: 16px;
+    height: 25px;
+    width: 110px;
+    font-size: 11px;
+    bottom: -38px;
+  }
+  section.cardapio .cardapioContainer .massaSingle .massaMenu {
+    height: 45px;
+  }
+  section.cardapio .cardapioContainer .massaSingle .massaMenu .menuContainer {
+    margin-top: 0;
+    height: 45px;
+  }
+  section.cardapio .cardapioContainer .massaSingle .massaMenu .menuContainer p {
+    font-size: 10px;
+  }
+  section.cardapio .cardapioContainer .massaSingle .massaMenu .menuContainer .precoSingle {
+    font-size: 15px;
+  }
+  section.cardapio .cardapioContainer .massaSingle .massaMenu p.ingredientes {
+    font-size: 10px;
   }
 }
 /*# sourceMappingURL=style.css.map */
