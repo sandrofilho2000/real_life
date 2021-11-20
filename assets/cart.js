@@ -45,8 +45,7 @@ $(function(){
     
                 document.querySelector('.productWrapper').appendChild(produtoSingle)
             })
-        }
-        
+        }   
     }
     fillCart()
 
@@ -81,7 +80,7 @@ $(function(){
             localStorage.setItem("pedidos", JSON.stringify(currentCart()));
         }
 
-        function finalizarPedido(){
+        function atualizarPedido(){
             var produtos = ''
             const pedidoAll = currentCart()
             pedidoAll.forEach((obj)=>{
@@ -103,43 +102,35 @@ $(function(){
 -----------------------------
 RESUMO DO PEDIDO 
 
-Pedido 15
-
-
-
 ${produtos}
 
- 
- Subtotal do item: ${$('span.subtotal')}
+
+OBSERVAÇÕES
+
+${document.querySelector('.productObservation textarea').value}
+
+
  -  -  -  -  -  -  -  -  -  -  -
 
-SUBTOTAL: ${$('span.total')}
+SUBTOTAL: ${document.querySelector('span.subtotal').innerText}
 
  ------------------------------------------
-▶ Dados para entrega 
+*->* Dados para entrega 
  
-Nome: Sandro Filho 
-Endereço: Rua marli ferreira, nº: Lote 206
-Bairro: Apollo III
-Complemento: Quadra 10
-Ponto de Referência: Rua da creche casa da criança, portão de correr marrom 
-Telefone: 21984238879
+${dadosEntrega()}
 
-Taxa de Entrega: R$ 3,00
+Taxa de Entrega: ${document.querySelector('span.spanEntrega').innerText}
 
- 🕙 Tempo de Entrega: aprox. 12:17 a 12:47
+*->* Tempo de Entrega: À combinar
 
  ------------------------------- 
 
-Acréscimo pela forma de pagamento: R$ 1,00 
-
-▶ TOTAL = R$ 40,00
+*->* TOTAL = ${document.querySelector('span.total').innerText}
  ------------------------------ 
 
-▶ PAGAMENTO 
+*->* PAGAMENTO 
  
-Pagamento no cartão 
-Cartão: Hipercard`
+${pagamento()}`
             
         document.querySelector('#copiarAqui').value = pedidoFinal
         document.querySelector(".hiddenOrder").innerHTML = pedidoFinal
@@ -157,7 +148,7 @@ Cartão: Hipercard`
             }
         }
 
-        finalizarPedido()
+        atualizarPedido()
         
 
         function cartNumber(){
@@ -194,6 +185,7 @@ Cartão: Hipercard`
             }
 
             addOrderToMemory()
+            atualizarPedido()
         }
         totalAll()
 
@@ -241,6 +233,97 @@ Cartão: Hipercard`
     
         }
 
+        function verificarEntrega(){
+            if(document.querySelector('#entrega').checked){
+                document.querySelectorAll('.addressToggle').forEach((single)=>{
+                    single.classList.add('unabled')
+                    document.querySelector('section.finalizarPedido h4').innerText = "À RETIRAR"
+                    
+                })
+                return false
+            }else{
+                document.querySelectorAll('.addressToggle').forEach((single)=>{
+                    single.classList.remove('unabled')
+                    document.querySelector('section.finalizarPedido h4').innerText = "À ENTREGAR"  
+                     
+                })
+                return true 
+            } 
+        }
+        verificarEntrega()
+        function dadosEntrega(){
+            if(verificarEntrega() == true){
+                return `Nome: ${document.querySelector('[name=nome]').value}
+Telefone: ${document.querySelector('[name=telefone]').value}
+Endereço: ${document.querySelector('[name=endereco]').value}
+Bairro: ${document.querySelector('[name=bairro]').value}
+Complemento: ${document.querySelector('[name=complemento]').value}
+Ponto de Referência: ${document.querySelector('[name=referencia]').value}` 
+            }else{
+                return `Nome: ${document.querySelector('[name=nome]').value}
+Telefone: ${document.querySelector('[name=telefone]').value}`
+            }
+
+            
+        }
+
+        function pagamento(){
+            
+            if(!document.querySelector("#dinheiro").checked){
+                document.querySelector(".troco").style.display = 'none'
+                if(document.querySelector("#credito").checked){
+                    return "Pagamento no crédito"
+                }else if(document.querySelector("#debito").checked){
+                    return "Pagamento no débito"
+                }
+                
+            }else{
+                document.querySelector(".troco").style.display = 'flex'
+
+                if(document.querySelector("#troco").value.length != 0){
+                    return `Pagamento no dinheiro \nTroco para R$${Number(document.querySelector("#troco").value).toFixed(2)}`
+                }else{
+                    return `Pagamento no dinheiro \nSem troco`
+                }
+
+            }
+            
+        }
+
+        function liberarPedidoBtn(){
+            let nomeLength = document.querySelector('[name=nome]').value.length
+            let telefoneLength = document.querySelector('[name=telefone]').value.length
+            let enderecoLength = document.querySelector('[name=endereco]').value.length
+            let bairroLength = document.querySelector('[name=bairro]').value.length
+            let referenciaLength = document.querySelector('[name=referencia]').value.length
+
+            let dinheiro = document.querySelector("#dinheiro")
+            let credito = document.querySelector("#credito")
+            let debito = document.querySelector("#debito")
+        
+            if(dinheiro.checked == true || credito.checked == true || debito.checked == true){
+                if(!document.querySelector('#entrega').checked){
+                    if(nomeLength, telefoneLength, enderecoLength, bairroLength, referenciaLength != 0){
+                        document.querySelector(".pedir h2").classList.add("active")
+                    }else{
+                        document.querySelector(".pedir h2").classList.remove("active")
+                    }
+                }else{
+                    if(nomeLength, telefoneLength != 0){
+                        document.querySelector(".pedir h2").classList.add("active")
+                    }else{
+                        document.querySelector(".pedir h2").classList.remove("active")
+                    }
+                }
+            }else{
+                console.log("CHECKED")
+                document.querySelector(".pedir h2").classList.remove("active")
+            }
+            
+
+            pagamento()
+            
+        }
         document.querySelectorAll(".plusQtn").forEach((plusQtn)=>{
             plusQtn.onclick = (e)=>{
                 let parent = e.currentTarget.parentElement
@@ -273,6 +356,7 @@ Cartão: Hipercard`
                 productTotal(e)
                 
             })
+            
         })
     
         document.querySelectorAll(".productDelete p").forEach(deleteBtn => {
@@ -290,6 +374,31 @@ Cartão: Hipercard`
             totalAll()
         })
 
+        document.querySelectorAll("form div input").forEach(input=>{
+            input.addEventListener("keyup", function(){
+                atualizarPedido()
+                liberarPedidoBtn()
+            })
+            input.addEventListener("blur", function(){
+                atualizarPedido()
+                liberarPedidoBtn()
+            })
+        })
+
+        document.querySelector('.productObservation textarea').addEventListener('keyup', function(){
+            atualizarPedido()
+        })
+
+        document.querySelectorAll("[name=payment]").forEach((radio)=>{
+            radio.addEventListener('click', function(){
+                atualizarPedido()
+                liberarPedidoBtn()
+            })
+        })
+
+        document.querySelector("#troco").addEventListener('keyup', function(){
+            atualizarPedido()
+        })
 
         $('.seuPedido p').click(function(){
             $('.seuPedido p').html('COPIADO <i class="bx bx-check"></i>')
@@ -307,8 +416,8 @@ Cartão: Hipercard`
             
         })
 
-        $('h2.finalizarPedido').click(function(){
-            var yourMessage = finalizarPedido()
+        $('.pedir h2').click(function(){
+            var yourMessage = atualizarPedido()
             function getLinkWhastapp(number) {
                 message = window.encodeURIComponent(yourMessage)
                 console.log(yourMessage)
@@ -316,6 +425,10 @@ Cartão: Hipercard`
             }
     
             getLinkWhastapp("+55 32 8411 6088")
+        })
+
+        $('#entrega').change(function(){
+            verificarEntrega()
         })
 
     }

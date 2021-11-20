@@ -11,7 +11,31 @@
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="assets/style.css">
     <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
-
+    <script>
+        function mask(o, f) {
+            setTimeout(function() {
+                var v = mphone(o.value);
+                if (v != o.value) {
+                    o.value = v;
+                }
+                }, 1);
+            }
+            
+            function mphone(v) {
+                var r = v.replace(/\D/g, "");
+                r = r.replace(/^0/, "");
+                if (r.length > 10) {
+                    r = r.replace(/^(\d\d)(\d{5})(\d{4}).*/, "($1) $2-$3");
+                } else if (r.length > 5) {
+                    r = r.replace(/^(\d\d)(\d{4})(\d{0,4}).*/, "($1) $2-$3");
+                } else if (r.length > 2) {
+                    r = r.replace(/^(\d\d)(\d{0,5})/, "($1) $2");
+                } else {
+                    r = r.replace(/^(\d*)/, "($1");
+                }
+                return r;
+            }
+    </script>
     <title>Real Life</title>
 </head>
 <body>
@@ -546,15 +570,15 @@
 
     <section class="finalizarPedido">
         <i class='bx bx-right-arrow-alt backArrow'></i>
-        <p class="hiddenOrder"></p>
+        <p hidden class="hiddenOrder"></p>
         <h2>FINALIZAR PEDIDO</h2>
-
+        <h4 class="deliveryMode">À ENTREGAR</h4>
         <form action="">
             <div class="leftColumn column">
-                <input type="text" name="nome" id="" placeholder="Nome">
+                <input type="text" name="nome" placeholder="Nome">
 
-                <input list="bairrosList" name="" id="" placeholder="Bairros">
-                <datalist id="bairrosList">
+                <input list="bairrosList" class="addressToggle" name="bairro" placeholder="Bairro">
+                <datalist class="addressToggle" id="bairrosList">
                     <option value="Água Santa">Água Santa</option>
                     <option value="Aguada">Aguada</option>
                     <option value="Área Rural de Barbacena">Área Rural de Barbacena</option>
@@ -632,15 +656,31 @@
                     <option value="Vista Alegre">Vista Alegre</option>
                 </datalist>
 
-                <input type="text" name="referencia" placeholder="Ponto de referência">
+                <input type="text" class="addressToggle" name="referencia" placeholder="Ponto de referência">
             </div>
             <div class="rightColumn column">
-                <input type="text" name="endereco" placeholder="Endereço">
-                <input type="text" name="telefone" placeholder="Telefone">
-                <input type="text" name="complemento" placeholder="Complemento">
-
+                <input type="text" class="addressToggle" name="endereco" placeholder="Endereço">
+                <input type="text" name="telefone" placeholder="Telefone" onkeypress="mask(this, mphone)" onblur="mask(this, mphone)";>
+                <input type="text" class="addressToggle" name="complemento" placeholder="Complemento">
             </div>
         </form>
+
+        <div class="pagamento">
+            <div class="containerRadio">
+                <input value="dinheiro" type="radio" name="payment" id="dinheiro">
+                <label for="dinheiro">Dinheiro</label>
+                <input value="credito" type="radio" name="payment" id="credito">
+                <label for="credito">Crédito</label>
+                <input value="debito" type="radio" name="payment" id="debito">
+                <label for="debito">Débito</label>
+            </div>
+
+            <div class="troco">
+                <label for="troco" class="troco"> <em>(Opcional)</em> Troco para: R$</label>
+                <input type="number" name="" id="troco">
+            </div>
+
+        </div>
 
         <p class="pSeuPedido">SEU PEDIDO</p>
         <div class="seuPedido">
@@ -659,6 +699,8 @@
 
         <div class="pedir">
             <h2>PEDIR <i class='bx bxl-whatsapp'></i></h2>
+
+            <p>ou copie seu pedido e mande para (00)99999-9999</p>
         </div>
     </section>
 

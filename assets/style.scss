@@ -17,12 +17,12 @@ html{
     right: 0;
 }
 
-.overlayLoad{
+.overlayLoad, .overlayCart{
     position: fixed;
     width: 100vw;
     height: 100vh;
     background: black;
-    z-index: 9999;
+    z-index: 99999;
     top: 0;
     left: 0;
     display: flex;
@@ -36,7 +36,18 @@ html{
         animation: opacidade 3s infinite;
     }
 }
+div.overlayCart{
+    z-index: -999;
+    opacity: .0;
+    left: 0;
+    transition: all ease-in-out 0.3s;
+}
 
+div.overlayCart.active{
+    z-index: 999;
+    opacity: .85;
+    
+}
 @keyframes opacidade{
     0%{
         opacity: .9;
@@ -63,6 +74,16 @@ html{
     background: #008037;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
 
 h2, h3{
     text-align: center;
@@ -209,6 +230,7 @@ nav{
             text-align: right;
             line-height: 77px;
             position: relative;
+            right: -39px;
             i{
                 color: #008037;
                 font-size: 35px;
@@ -960,7 +982,8 @@ section.cart{
                     .minusQtn{
                         background: #005826;
                         color: #fff;
-                        margin-left: 10px;
+                        margin-left: 25px;
+                        
                         cursor: pointer;
                     }
                 }
@@ -984,6 +1007,17 @@ section.cart{
         }
     }
 
+    #entrega{
+        margin-left: 14px;
+        accent-color: #008037;
+        position: relative;
+        top: 2px;
+    }
+    label{
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: bold;
+    }
     .productObservation{
         width: 93.5%;
         margin: 0 auto;
@@ -999,7 +1033,9 @@ section.cart{
             height: 60px;
             border: 1px solid #005826;
             outline: none;
+            padding: 5px;
             margin-top: 5px;
+            margin-bottom: 10px;
             &:focus{
                 border: 2px solid #005826;
             }
@@ -1019,7 +1055,7 @@ section.cart{
     }
 }
 
-section.cart.active{
+section.cart.active, section.finalizarPedido.active{
     right: 0 !important;
 }
 
@@ -1042,6 +1078,242 @@ h2.finalizarPedido{
 }
 
 
+section.finalizarPedido{
+    position: fixed;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 9999;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    transition: all ease-in-out 0.3s ;
+    max-width: 450px;
+    padding: 20px 0;
+    background: white;
+    border-left: 1px solid #005826;
+
+    i.backArrow{
+        position: absolute;
+        top: 30px;
+        left: 10px;
+        color: #005826;
+        font-size: 35px;
+        cursor: pointer;
+    }
+
+    h2{
+        width: 215px;
+        margin-top: 10px;
+        font-size: 15px;
+    }
+
+    h4{
+        text-align: center;
+        position: relative;
+        top: 15px;
+    }
+
+    form{
+        margin: 0 auto;
+        width: 330px;
+        height: auto;
+        min-height: 215px;
+        margin-top: 50px;
+        display: flex;
+        .column{
+            width: 50%;
+            height: 100%;
+            min-height: 215px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            input{
+                background: white;
+                border: none;
+                outline: none;
+                color: #00612a;
+                font-weight: 700px;
+                width: 90%;
+                padding-bottom: 5px;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.541);
+                margin-bottom: 45px;
+                ::placeholder{
+                    font-weight: 700;
+                }
+            }
+
+            input::-webkit-input-placeholder{
+                color:#00612a7c;
+                font-weight: bold;
+            }
+            input:-moz-placeholder {
+                color:#00612a7c;
+                font-weight: bold;
+            }
+            
+        }
+    }
+
+    .pagamento{
+        width: 330px;
+        margin: 0 auto;
+        height: 100px;
+        margin-top: -40px;
+        margin-bottom: 20px;
+        height: 85px;
+
+        .containerRadio{
+            display: flex;
+            align-items: center;
+            flex-wrap: nowrap;
+            width: 100%;
+            height: 40px;
+            input{
+                accent-color: #008037;
+            }
+    
+            label{
+                text-transform: uppercase;
+                font-weight: bold;
+                margin-right: 55px;
+                font-size: 13px;
+                margin-left: 3px;
+            }
+        }
+
+
+        .troco{
+            display: flex;
+
+            label{
+                font-size: 13px;
+                font-weight: bold;
+            }
+    
+            input#troco{
+                border: none;
+                outline: none;
+                width: 35px;
+                background: none;
+                border-bottom: 1px solid #00612a;
+                padding-bottom: 2px;
+                padding-left: 2px;
+                position: relative;
+                top: -1px;
+            }
+        }
+        
+
+    }
+
+    p.pSeuPedido{
+        color: #00612a;
+        font-weight: bold;
+        margin-left: 60px;
+        margin-bottom: 5px;
+    }
+
+    .seuPedido{
+        width: 315px;
+        height: 145px;
+        border: 1px solid;
+        margin-left: 60px;
+        padding: 0 0 0 10px;
+        position: relative;
+        overflow: hidden;
+        .container{
+            width: 100%;
+            height: 100%;
+            transition: all ease-in-out 0.6s;
+            textarea{
+                display: block;
+                width: 100%;
+                border: none;
+                outline: none;
+                font-size: 13px;
+                height: 100%;
+                resize: none;
+            }
+        }
+        
+
+        p{
+            transition: all ease-in-out 0.6s;
+            display: block;
+            position: absolute;
+            height: 20px;
+            width: 100%;
+            text-align: center;
+            background: #00612a;
+            bottom: -20px;
+            right: 0;
+            color: white;
+            font-weight: lighter;
+            font-size: 12px;
+            line-height: 20px;
+            letter-spacing: 0.075em;
+            cursor: pointer;
+            &:hover{
+                background-color: #008037;
+            }
+        }
+
+        &:hover{
+            .container{
+                height: 123px;
+            }
+            p{
+                bottom: 0 !important;
+            }
+        }
+    }
+
+    .pedir{
+        width: 314px;
+        height: 60px;
+        margin-left: 60px;
+        display: flex;
+        align-items: center;
+
+        h2{
+            height: 30px;
+            width: 130px;
+            display: flex;
+            align-items: center;
+            text-align: left;
+            justify-content: space-between;
+            padding-left: 12px;
+            padding-right: 5px;
+            cursor: pointer;
+            position: relative;
+            opacity: 0.5;
+            pointer-events: none;
+            transition: all ease-in-out .2s;
+            i{
+                color: #fff;
+                font-size: 25px;
+            }
+        }
+
+        h2.active{
+            opacity: 1;
+            pointer-events: initial;
+        }
+
+        p{
+            font-size: 13px;
+            display: block;
+            width: 170px;
+            position: relative;
+            top: 2px;
+        }
+    }
+
+    .addressToggle.unabled{
+        display: none;
+    }
+}
+
 @media screen and (max-width: 1250px){
     section.cardapio .cardapioContainer{
         grid-template-columns: (1fr 1fr 1fr);
@@ -1057,9 +1329,6 @@ h2.finalizarPedido{
         transform: scale(.7);
     }
 
-    .minusQtn{
-        margin-left: 25px !important;
-    }
 }
 
 @media screen and (max-width: 853px){
@@ -1073,7 +1342,9 @@ h2.finalizarPedido{
     nav .menuToggle{
         display: flex;
     }
-
+    nav div.cartMenu .cart{
+        right: -5px;
+    }
     nav.navDesktop div.cartMenu .menu ul{
         display: none;
     }
