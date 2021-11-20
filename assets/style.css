@@ -610,6 +610,10 @@ section.cardapio .cardapioContainer .massaSingle .massaMenu .menuContainer {
   top: 0;
 }
 
+section.cardapio .cardapioContainer .massaSingle .massaMenu .menuContainer p:first-of-type {
+  width: 50%;
+}
+
 section.cardapio .cardapioContainer .massaSingle .massaMenu .menuContainer p {
   color: white;
   font-size: 13px;
@@ -1742,7 +1746,7 @@ section.finalizarPedido .addressToggle.unabled {
     font-size: 9px;
   }
   section.cardapio .cardapioContainer .massaSingle .massaMenu .menuContainer .precoSingle {
-    font-size: 12px;
+    font-size: 14px;
   }
   section.cardapio .cardapioContainer .massaSingle .massaMenu p.ingredientes {
     font-size: 9px;

@@ -503,6 +503,9 @@ section.cardapio{
                     padding: 2px 5px;
                     text-align: left;
                     top: 0;
+                    p:first-of-type{
+                        width: 50%;
+                    }
                     p{
                         color: white;
                         font-size: 13px;
@@ -1519,7 +1522,7 @@ section.finalizarPedido{
                 }
 
                 .precoSingle {
-                    font-size: 12px;
+                    font-size: 14px;
                 }
             }
 
